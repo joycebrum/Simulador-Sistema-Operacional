@@ -63,3 +63,5 @@ void print(FIFO *f) {
 		} 
 	}
 }
+
+#endif
