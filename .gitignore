@@ -42,6 +42,9 @@
 *.idb
 *.pdb
 
+# Arquivo main testa
+teste.c
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
