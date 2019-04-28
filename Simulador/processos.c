@@ -24,23 +24,23 @@ void resetWaitTimeProcess(Processo *processo) {
 }
 
 void blockProcess(Processo *processo) {
-	//adiciona na fila de blocked e remove da fila de running
+	//TODO adiciona na fila de blocked e remove da fila de running
 	processo->status = blocked;
 }
 
 void runProcess(Processo *processo) {
-	//remove da fila de waiting
+	//TODO remove da fila de waiting
 	processo->status = running;
 }
 void endProcess(Processo *processo) {
-	//remove o processo da lista de processos ativos
+	//TODO remove o processo da lista de processos ativos
 	processo->status = terminated;
 }
 void interruptProcess(Processo *processo) {
 	processo->status = waiting;
 }
 void unblockProcess(Processo *processo) {
-	//remove o processo da fila de bloqueados
+	//TODO remove o processo da fila de bloqueados
 	processo->status = waiting;
 }
 
