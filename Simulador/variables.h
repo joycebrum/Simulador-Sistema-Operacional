@@ -6,11 +6,13 @@
 #define DISCO 0
 #define FITA_MAGNETICA 1
 #define IMPRESSORA 2
+#define TEMPO_MAXIMO 100
+#define TEMPO_MINIMO 1
 
 /*-Variáveis Globais---------------------------------------------------*/
 typedef struct _IO {
 	int tipoIO;
-	double tempo;
+	int tempo;
 } IO;
 
 //tipos de IO e seus respectivos tempos
@@ -22,10 +24,27 @@ typedef struct _Processo {
 	int PID;
 	int PPID;
 	int priority;
-	float waitTime;
+	int waitTime;
 	enum statusTypes status;
 } Processo;
 
+typedef struct _TempoChamadaIO {
+	IO tipoIO;
+	int tempoBloqueio;
+} TempoChamadaIO;
+
+typedef struct _InstanciaProcesso {
+	int PID;
+	int tempoServico;
+	int quantidadeChamadas;
+	TempoChamadaIO *chamada; //vetor com os tempos de chamada de IO
+} InstanciaProcesso;
+
+//simula a memória que possui todas as informações do processo
+//no geral o que eh manipulado nas filas é o _instanciaProcesso
+Processo PCB[MAX_PROCESSOS];
+
+int posFinalPCB = 0;
 
 #endif
 
