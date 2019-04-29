@@ -18,7 +18,7 @@ typedef struct _IO {
 //tipos de IO e seus respectivos tempos
 IO tiposIO[3] = {{DISCO, 15}, {FITA_MAGNETICA, 30}, {IMPRESSORA, 20}};
 
-enum statusTypes {created, running, waiting, blocked, terminated};
+enum statusTypes {new, ready, running, blocked, exit};
 
 typedef struct _Processo {
 	int PID;
