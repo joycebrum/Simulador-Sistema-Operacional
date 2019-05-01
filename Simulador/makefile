@@ -1,9 +1,9 @@
 ########### Makefile ##########
-all: final
-final: processos.o
-	gcc -o final processos.o
-main.o: processos.c variables.h
-	gcc -o processos.o -c processos.c -W -Wall -ansi -pedantic
+all: main
+main: main.o
+	gcc -o main main.o
+main.o: main.c processos.h variables.h
+	gcc -o main.o -c main.c -W -Wall -ansi -pedantic
 clean:
 	rm -rf *.o
 mrproper: clean

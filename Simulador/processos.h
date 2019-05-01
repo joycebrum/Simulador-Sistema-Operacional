@@ -1,7 +1,6 @@
 #ifndef processos
 #define processos
 
-#include "variables.h"
 #include <time.h>
 #include <stdlib.h>
 
@@ -54,31 +53,31 @@ TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoMaximoInsta
 	return temposChamada;
 }
 
-InstanciaProcesso createNewProcess(int priority, int PPID) {
-	Processo newProcesso;
+Processo* createNewProcess(int priority, int PPID, int tempo) {
+	Processo *newProcesso = (Processo*) malloc(sizeof(Processo));
 
-	newProcesso.priority = priority;
-	newProcesso.PID = PID++;
-	newProcesso.PPID = PPID;
-	newProcesso.status = created;
-	newProcesso.waitTime = 0;
+	newProcesso->priority = priority;
+	newProcesso->PID = PID++;
+	newProcesso->PPID = PPID;
+	newProcesso->status = novo;
+	newProcesso->tempoExecutado = 0;
+	newProcesso->tempoEspera = 0;
+	newProcesso->tempoEntrada = tempo;
+	
+	newProcesso->tempoServico = getTempoAleatorio(0);
 
-	InstanciaProcesso instancia;
-	instancia.PID = newProcesso.PID;
-	instancia.tempoServico = getTempoAleatorio(0);
-
-	int quantidadeIO = getValorAleatorio(0, instancia.tempoServico);
-	instancia.quantidadeChamadas = quantidadeIO;
-	instancia.chamada = getTempoBloqueioAleatorio(quantidadeIO, instancia.tempoServico);
-	return instancia;
+	int quantidadeIO = getValorAleatorio(0, newProcesso->tempoServico);
+	newProcesso->quantidadeChamadas = quantidadeIO;
+	newProcesso->chamada = getTempoBloqueioAleatorio(quantidadeIO, newProcesso->tempoServico);
+	return newProcesso;
 }
 
-void increaseWaitTimeProcess(Processo *processo, float timePassed) {
-	processo->waitTime += timePassed;
+void increaseWaitTimeProcess(Processo *processo) {
+	processo->tempoEspera++;
 }
 
 void resetWaitTimeProcess(Processo *processo) {
-	processo->waitTime = 0;
+	processo->tempoEspera = 0;
 }
 
 void blockProcess(Processo *processo) {
@@ -89,14 +88,35 @@ void runProcess(Processo *processo) {
 	processo->status = running;
 }
 void endProcess(Processo *processo) {
-	processo->status = terminated;
+	processo->status = terminado;
 }
-void interruptProcess(Processo *processo) {
-	processo->status = waiting;
-}
+void toReadyProcess(Processo *processo) {
+	processo->status = ready;
+} 
 void unblockProcess(Processo *processo) {
-	//TODO remove o processo da fila de bloqueados
-	processo->status = waiting;
+	toReadyProcess(processo);
+	processo->tempoBloqueado = 0;
+}
+
+bool verificaSeProcessoTerminou(Processo *processo) {
+	if(processo->tempoExecutado == processo->tempoServico) {
+		endProcess(processo);
+		return 1;
+	}
+	return 0;
+}
+
+// para exibição de resultado
+void printProcesso(Processo processo) {
+	printf("PID: %d, tempo serviço: %d\n", processo.PID, processo.tempoServico);
+
+	int quantidade = processo.quantidadeChamadas;
+	printf("quantidade IO %d \n", quantidade);
+	int i = 0;
+	for (i = 0; i < quantidade; i++) {
+		printf("(%s, %d) ",  processo.chamada[i].tipoIO.nomeTipo, processo.chamada[i].tempoBloqueio);
+	}
+	printf("\n");
 }
 
 #endif

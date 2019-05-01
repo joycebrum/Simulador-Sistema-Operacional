@@ -14,20 +14,17 @@
 /*Tupla que indica o tipo de IO e a duração*/
 typedef struct _IO {
 	int tipoIO;
+	char nomeTipo[20];
 	int tempo;
+	bool vaiPraAlta;
 } IO;
 
 //tipos de IO e seus respectivos tempos
-IO tiposIO[3] = {{DISCO, 15}, {FITA_MAGNETICA, 30}, {IMPRESSORA, 20}};
+IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 15, 1}, {IMPRESSORA, "Impressora", 20, 1}};
 
-enum statusTypes {new, ready, running, blocked, exit};
+//não pode ser "new" ou "exit" pq sao simbolos da linguagem
+enum statusTypes {novo, ready, running, blocked, terminado};
 
-typedef struct _Processo {
-	int PID;
-	int PPID;
-	int priority;
-	enum statusTypes status;//Indica o status atual do processo
-} Processo;
 
 /*Tuplas da forma (IO, tempo), onde tempo*/
 typedef struct _TempoChamadaIO {
@@ -35,23 +32,20 @@ typedef struct _TempoChamadaIO {
 	int tempoBloqueio;
 } TempoChamadaIO;
 
-typedef struct _InstanciaProcesso {
+typedef struct _Processo {
 	int PID;
-	int tempoEntrada;//Tempo em que o processo é escalonado pela primeira vez
-	int tempoServico;//Tempo decorrido desde o escalonamento do processo (apenas incrementado enquanto o processo está escalonado)
+	int PPID;
+	int priority;
+	enum statusTypes status;//Indica o status atual do processo
+	int tempoEntrada;//Tempo em que o processo é criado
+	int tempoServico;//Tempo previsto de processamento do processo
 	int tempoExecutado;//Sempre no intervalo [tempoEntrada,tempoServico]
 	int tempoEspera;//Tempo que processo está ocioso na fila de baixa prioridade (ready)
+	int tempoBloqueado; //Tempo que o processo está executando I/O
 	int quantidadeChamadas; //Quantidade de IO que o processo irá executar
 	TempoChamadaIO *chamada; //Vetor com os tempos de chamada de cada IO
-} InstanciaProcesso;
+} Processo;
 
-/*Simula a memória que possui todas as informações do processo (PCB, Process Control Block).
- *No geral, o que é manipulado nas filas é o InstanciaProcesso.*/
-Processo PCB[MAX_PROCESSOS];
-
-/*Índice que diz a quantidade de processos criados até o momento menos 1.
- *Será usado para iterar sobre a variável PCB */
-int posFinalPCB = 0;
 
 #endif
 
