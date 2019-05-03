@@ -1,19 +1,24 @@
 #ifndef processos
 #define processos
 
+#include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include "variables.h"
 
 int PID = 10;
 
+/*Inicializa semente*/
 void initSrand() {
 	srand(time(0));
 }
 
+/*Gera valor aleatório entre [mínimo,máximo]*/
 int getValorAleatorio(int minimo, int maximo) {
 	return rand() % (maximo + 1 - minimo) + minimo;
 }
 
+/*Gera um valor aleatório entre [TEMPO_MINIMO,TEMO_MAXIMO]*/
 int getTempoAleatorio(int tempoMaxEspecifico) {
 	if(tempoMaxEspecifico == 0) {
 		return getValorAleatorio(TEMPO_MINIMO, TEMPO_MAXIMO);
@@ -22,37 +27,32 @@ int getTempoAleatorio(int tempoMaxEspecifico) {
 		return getValorAleatorio(TEMPO_MINIMO, tempoMaxEspecifico);
 	}
 }
-TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoMaximoInstancia) {
+
+/*Gera todas as tuplas de (IO,tempo) de um processo*/
+TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 	TempoChamadaIO *temposChamada;
 	temposChamada = (TempoChamadaIO*) malloc(quantidadeIO*sizeof(TempoChamadaIO));
 
-	int *temposUtilizados = (int*) malloc(quantidadeIO*sizeof(int));
 	int i;
 	for(i = 0; i < quantidadeIO; i++) {
-		TempoChamadaIO novoTempoChamada;
-		int tempoBloqueio = getTempoAleatorio(tempoMaximoInstancia);
+		int tempoBloqueio = getTempoAleatorio(tempoServico);
 
 		int j;
-		bool unico = false;
-		while(!unico) {
-			for(j=0; j < i; j++) {
-				if(tempoBloqueio == temposUtilizados[j]) {
-					tempoBloqueio = getTempoAleatorio(tempoMaximoInstancia);
-					continue;
-				}
+		for(j=0; j < i; j++) {
+			if(tempoBloqueio == temposChamada[j].tempoBloqueio) {
+				tempoBloqueio = getTempoAleatorio(tempoServico);
+				j=0;
 			}
-			unico = true;
 		}
-		temposUtilizados[i] = tempoBloqueio;
-		novoTempoChamada.tempoBloqueio = tempoBloqueio;
-		novoTempoChamada.tipoIO = tiposIO[getValorAleatorio(0, 2)];
-
-		temposChamada[i] = novoTempoChamada;
+	
+		temposChamada[i].tempoBloqueio = tempoBloqueio;
+		temposChamada[i].tipoIO = tiposIO[getValorAleatorio(0,2)];
 	}
 	
 	return temposChamada;
 }
 
+/*Cria o PCB de um novo processo*/
 Processo* createNewProcess(int priority, int PPID, int tempo) {
 	Processo *newProcesso = (Processo*) malloc(sizeof(Processo));
 
@@ -62,8 +62,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	newProcesso->status = novo;
 	newProcesso->tempoExecutado = 0;
 	newProcesso->tempoEspera = 0;
-	newProcesso->tempoEntrada = tempo;
-	
+	newProcesso->tempoEntrada = tempo;	
 	newProcesso->tempoServico = getTempoAleatorio(0);
 
 	int quantidadeIO = getValorAleatorio(0, newProcesso->tempoServico);
@@ -72,10 +71,14 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	return newProcesso;
 }
 
+/*Incrementa o tempo de espera de um processo caso esteja na fila de prontos.
+ *Utilizada para controlar a fila de prioridade.*/
 void increaseWaitTimeProcess(Processo *processo) {
 	processo->tempoEspera++;
 }
 
+/*Reseta o tempo de espera de um processo caso saia de uma das filas de prontos.
+ *Indica que o processo ganhou prioridade.*/
 void resetWaitTimeProcess(Processo *processo) {
 	processo->tempoEspera = 0;
 }
@@ -98,12 +101,12 @@ void unblockProcess(Processo *processo) {
 	processo->tempoBloqueado = 0;
 }
 
-bool verificaSeProcessoTerminou(Processo *processo) {
+bool processoTerminou(Processo *processo) {
 	if(processo->tempoExecutado == processo->tempoServico) {
 		endProcess(processo);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 // para exibição de resultado
