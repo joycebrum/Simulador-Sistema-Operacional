@@ -2,6 +2,8 @@
 #define fifo
 
 #include <stddef.h>
+#include "processos.h"
+#include "variables.h"
 
 /* FIFO: First in first out, modelo padrão de fila
  * queue: vetor onde serão colocados os processos
@@ -54,7 +56,7 @@ Processo* pop(FIFO *f) {
 void printPID(FIFO *f) {
 	int i = f->head;
 	printf("[");
-	while(1) {
+	while(true) {
 		if(i!=f->tail){
 			printf("%d, ", f->queue[i]->PID);
 			i=(i+1)%MAX_PROCESSOS;
@@ -68,7 +70,7 @@ void printPID(FIFO *f) {
 
 void printFIFO(FIFO *f) {
 	int i = f->head;
-	while(1) {
+	while(true) {
 		if(i!=f->tail){
 			Processo *processo = f->queue[i];
 			printProcesso(*processo);
