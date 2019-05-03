@@ -1,7 +1,13 @@
 #ifndef gerenciadorfilas
 #define gerenciadorfilas
 
+#define TEMPO_MAXIMO_BAIXA_PRIORIDADE 100
 #include <stddef.h>
+#include "fifo.h"
+#include "processos.h"
+#include "variables.h"
+
+
 
 FIFO altaPrioridade;
 FIFO baixaPrioridade;
@@ -18,67 +24,52 @@ void initFilas() {
 }
 
 void atualizarTempoEsperaProcessosReady() {
-	// TODO Implementar esquema de aumento de prioridade com base no tempo de espera
 	if(!empty(&altaPrioridade)) {
 		int i = altaPrioridade.head;
-
-		while(1) {
-			if(i > altaPrioridade.tail){
-				break;
-			}
-			
-			Processo *processo = altaPrioridade.queue[i];
-			increaseWaitTimeProcess(processo);
-			
-			
+		while(true) {
+			Processo *processo = altaPrioridade.queue[i]; 
+			increaseWaitTimeProcess(processo);			
+			if(i == altaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
 	}
 	if(!empty(&baixaPrioridade)) {
+		/*Se tempoEspera>TEMPO_MAXIMA_BAIXA_PRIORIDADE => Passa processo para fila de alta prioridade*/
+		if(baixaPrioridade.queue[0]->tempoEspera>TEMPO_MAXIMO_BAIXA_PRIORIDADE) add(&baixaPrioridade, pop(&altaPrioridade));
 		int i = baixaPrioridade.head;
-
-		while(1) {
-			if(i > baixaPrioridade.tail){
-				break;
-			}
-			
+		while(true) {
 			Processo *processo = baixaPrioridade.queue[i];
 			increaseWaitTimeProcess(processo);
-			
+			if(i == baixaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
 	}
 	
 }
 
-void transferirFilaBaixaParaAlta() {
-	while (!empty(&baixaPrioridade)) {
-		Processo *processo = pop(&baixaPrioridade);
-		add(&altaPrioridade, processo);
-	}
-}
-
+/*Escalona um processo da fila de alta prioridade, se houver
+ *Se não, escalona um processo da fila de baixa prioridade, se houve
+ *Se não, retorna NULL*/
 Processo* selecionarProximoProcessoAExecutar() {
-	if (empty(&altaPrioridade)) {
-		if(empty(&baixaPrioridade)) {
-			return NULL;
-		}
-		transferirFilaBaixaParaAlta();
-	}
+	Processo *processo;
 	
-	Processo *processo = pop(&altaPrioridade);
+	if (!empty(&altaPrioridade)) processo = pop(&altaPrioridade);
+	else if(!empty(&baixaPrioridade)) processo = pop(&baixaPrioridade);
+	else return NULL;
 	
 	runProcess(processo);
 	return processo;
 }
 
+/*Preempção do RR*/
 void interromperProcesso(Processo *processo) {
-	if(!verificaSeProcessoTerminou(processo)) {
+	if(!processoTerminou(processo)) {
 		toReadyProcess(processo);
 		add(&baixaPrioridade, processo);
 	}
 }
 
+/*Interrupção de IO*/
 void pedirIO(Processo *processo, int tempo) {
 	int i;
 	TempoChamadaIO tempoChamada;
@@ -111,24 +102,18 @@ void pedirIO(Processo *processo, int tempo) {
 void updateFilaDeIO(IO tipo, FIFO *filaIO) {
 	if(!empty(filaIO)) {
 		int i = filaIO->head;
-		while(1) {
-			if(i > filaIO->tail){
-				break;
-			}
+		while(true) {
 			filaIO->queue[i]->tempoBloqueado++;			
+			if(i==filaIO->tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
 
 		i = filaIO->head;
-		while(filaIO->queue[i]->tempoBloqueado == tipo.tempo) {
+		if(filaIO->queue[i]->tempoBloqueado == tipo.tempo) {
 			Processo *process = pop(filaIO);
 			unblockProcess(process);
-			if(tipo.vaiPraAlta) {
-				add(&altaPrioridade, process);
-			}
-			else {
-				add(&baixaPrioridade, process);
-			}
+			if(tipo.vaiPraAlta) add(&altaPrioridade, process);
+			else add(&baixaPrioridade, process);
 		}
 	}
 }
