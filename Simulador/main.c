@@ -27,7 +27,7 @@ int main () {
 
 		updateBlockedProcesses();
 		
-		criaProcessosSeHouverDemanda();;
+		criaProcessosSeHouverDemanda();
 
 		processador();
 
