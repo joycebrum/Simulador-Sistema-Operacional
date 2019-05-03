@@ -99,6 +99,7 @@ void pedirIO(Processo *processo, int tempo) {
 	}
 	blockProcess(processo);
 }
+/*Soma 1 ao tempo de bloqueio dos processos em uma fila de IO*/
 void updateFilaDeIO(IO tipo, FIFO *filaIO) {
 	if(!empty(filaIO)) {
 		int i = filaIO->head;
@@ -117,11 +118,14 @@ void updateFilaDeIO(IO tipo, FIFO *filaIO) {
 		}
 	}
 }
+/*Atualizar as filas de todos os IOs*/
 void updateBlockedProcesses() {
 	updateFilaDeIO(tiposIO[DISCO], &filaDisco);
 	updateFilaDeIO(tiposIO[FITA_MAGNETICA], &filaFita);
 	updateFilaDeIO(tiposIO[IMPRESSORA], &filaImpressora);
 }
+
+/*Adiciona um processo novo à fila de prontos de alta prioridade*/
 void adicionarProcessoNovo(Processo *processo) {
 	add(&altaPrioridade, processo);
 	toReadyProcess(processo);
