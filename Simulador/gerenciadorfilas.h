@@ -70,19 +70,18 @@ void interromperProcesso(Processo *processo) {
 }
 
 /*Interrupção de IO*/
-void pedirIO(Processo *processo, int tempo) {
+bool pedirIO(Processo *processo, int tempo) {
 	int i;
+	bool achouIO;
 	TempoChamadaIO tempoChamada;
-	bool achou = 0;
 	for(i = 0; i < processo->quantidadeChamadas; i++) {
-		if(processo->chamada[i].tempoBloqueio == tempo) {
+		if(processo->chamada[i].tempoBloqueio == tempo)	{
 			tempoChamada = processo->chamada[i];
-			achou = 1;
+			achouIO = true;			
+			break;
 		}
 	}
-	if(!achou) {
-		return;
-	}
+	if(!achouIO) return false;
 	switch(tempoChamada.tipoIO.tipoIO) {
 		case DISCO:
 			add(&filaDisco, processo);
@@ -98,6 +97,7 @@ void pedirIO(Processo *processo, int tempo) {
 			break;
 	}
 	blockProcess(processo);
+	return true;
 }
 /*Soma 1 ao tempo de bloqueio dos processos em uma fila de IO*/
 void updateFilaDeIO(IO tipo, FIFO *filaIO) {
