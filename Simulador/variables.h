@@ -8,6 +8,7 @@
 #define IMPRESSORA 2
 #define TEMPO_MAXIMO 100
 #define TEMPO_MINIMO 1
+#define TEMPO_MAX_CHEGADA 300
 
 /*-Variáveis Globais---------------------------------------------------*/
 
