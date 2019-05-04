@@ -63,16 +63,14 @@ Processo* selecionarProximoProcessoAExecutar() {
 
 /*Preempção do RR*/
 void interromperProcesso(Processo *processo) {
-	if(!processoTerminou(processo)) {
-		toReadyProcess(processo);
-		add(&baixaPrioridade, processo);
-	}
+	toReadyProcess(processo);
+	add(&baixaPrioridade, processo);
 }
 
 /*Interrupção de IO*/
-bool pedirIO(Processo *processo, int tempo) {
+bool pedirIO(Processo *processo, int tempo, FILE *f) {
 	int i;
-	bool achouIO;
+	bool achouIO = false;
 	TempoChamadaIO tempoChamada;
 	for(i = 0; i < processo->quantidadeChamadas; i++) {
 		if(processo->chamada[i].tempoBloqueio == tempo)	{
@@ -82,6 +80,8 @@ bool pedirIO(Processo *processo, int tempo) {
 		}
 	}
 	if(!achouIO) return false;
+	fprintf(f,"Interrompendo processo com PID = %d para IO = %s. ", processo->PID, tempoChamada.tipoIO.nomeTipo);
+	fprintf(f,"Processo retornará no Quantum = %d\n", tempoChamada.tipoIO.tempo + tempo);
 	switch(tempoChamada.tipoIO.tipoIO) {
 		case DISCO:
 			add(&filaDisco, processo);
@@ -110,7 +110,7 @@ void updateFilaDeIO(IO tipo, FIFO *filaIO) {
 		}
 
 		i = filaIO->head;
-		if(filaIO->queue[i]->tempoBloqueado == tipo.tempo) {
+		if(filaIO->queue[0]->tempoBloqueado == tipo.tempo) {
 			Processo *process = pop(filaIO);
 			unblockProcess(process);
 			if(tipo.vaiPraAlta) add(&altaPrioridade, process);
