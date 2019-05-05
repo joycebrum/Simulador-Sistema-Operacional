@@ -52,37 +52,4 @@ Processo* pop(FIFO *f) {
 	else puts("Fila vazia");
 	return NULL;
 }
-/*Printa o estado atual da fila*/
-void printPID(FIFO *f) {
-	int i = f->head;
-	printf("[");
-	while(true) {
-		if(i!=f->tail){
-			printf("%d, ", f->queue[i]->PID);
-			i=(i+1)%MAX_PROCESSOS;
-		}
-		else {
-			printf("%d]\n\n", f->queue[i]->PID);
-			break;
-		} 
-	}
-}
-
-void printFIFO(FIFO *f) {
-	int i = f->head;
-	while(true) {
-		if(i!=f->tail){
-			Processo *processo = f->queue[i];
-			printProcesso(*processo);
-			i=(i+1)%MAX_PROCESSOS;
-		}
-		else {
-			Processo *processo = f->queue[i];
-			printProcesso(*processo);
-			break;
-		}
-		printf("\n");
-	}
-}
-
 #endif
