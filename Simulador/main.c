@@ -55,7 +55,7 @@ void inicializacao() {
 	numProcesso = 0;
 	tempoExecutadoProcessador = 0;
 	processoExecutando = NULL;
-	f = fopen("file.txt", "w");
+	f = fopen("log.txt", "w");
 	if (f == NULL){
 		fprintf(f,"Error opening file!\n");
 		exit(1);
