@@ -23,27 +23,34 @@ void initFilas() {
 	init(&filaImpressora);
 }
 
-void atualizarTempoEsperaProcessosReady() {
+void atualizarTempoEsperaProcessosReady(FILE *f) {
+	fprintf(f,"Fila de alta prioridade: [");
 	if(!empty(&altaPrioridade)) {
 		int i = altaPrioridade.head;
 		while(true) {
-			Processo *processo = altaPrioridade.queue[i]; 
-			increaseWaitTimeProcess(processo);			
+			Processo *processo = altaPrioridade.queue[i];
+			increaseWaitTimeProcess(processo);
+			fprintf(f,"%d ",  altaPrioridade.queue[i]->PID); 			
 			if(i == altaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
 	}
+	fprintf(f,"]\n");
+	fprintf(f,"Fila de baixa prioridade: [");
 	if(!empty(&baixaPrioridade)) {
 		/*Se tempoEspera>TEMPO_MAXIMA_BAIXA_PRIORIDADE => Passa processo para fila de alta prioridade*/
-		if(baixaPrioridade.queue[0]->tempoEspera>TEMPO_MAXIMO_BAIXA_PRIORIDADE) add(&baixaPrioridade, pop(&altaPrioridade));
+		if(baixaPrioridade.queue[0]->tempoEspera>TEMPO_MAXIMO_BAIXA_PRIORIDADE) add(&altaPrioridade, pop(&baixaPrioridade));
 		int i = baixaPrioridade.head;
 		while(true) {
 			Processo *processo = baixaPrioridade.queue[i];
 			increaseWaitTimeProcess(processo);
+			fprintf(f,"%d ", baixaPrioridade.queue[i]->PID);
 			if(i == baixaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
 	}
+	fprintf(f,"]\n");
+	
 	
 }
 
@@ -93,24 +100,29 @@ bool pedirIO(Processo *processo, int tempo, FILE *f) {
 			add(&filaFita, processo);
 			break;
 		default:
-			printf("ERROR: Tipo I/O %d inválido\n", tempoChamada.tipoIO.tipoIO);
+			fprintf(f,"ERROR: Tipo I/O %d inválido\n", tempoChamada.tipoIO.tipoIO);
 			break;
 	}
 	blockProcess(processo);
 	return true;
 }
 /*Soma 1 ao tempo de bloqueio dos processos em uma fila de IO*/
-void updateFilaDeIO(IO tipo, FIFO *filaIO) {
+void updateFilaDeIO(IO tipo, FIFO *filaIO, FILE *f) {
 	if(!empty(filaIO)) {
 		int i = filaIO->head;
+		fprintf(f,"Fila de bloqueados IO %s: [", tipo.nomeTipo);
 		while(true) {
-			filaIO->queue[i]->tempoBloqueado++;			
-			if(i==filaIO->tail) break;
+			filaIO->queue[i]->tempoBloqueado++;
+			fprintf(f," %d",  filaIO->queue[i]->PID);			
+			if(i==filaIO->tail) {
+				fprintf(f,"]\n");
+				break;
+			}
 			i=(i+1)%MAX_PROCESSOS;
 		}
 
 		i = filaIO->head;
-		if(filaIO->queue[0]->tempoBloqueado == tipo.tempo) {
+		if(filaIO->queue[filaIO->head]->tempoBloqueado == tipo.tempo) {
 			Processo *process = pop(filaIO);
 			unblockProcess(process);
 			if(tipo.vaiPraAlta) add(&altaPrioridade, process);
@@ -119,10 +131,10 @@ void updateFilaDeIO(IO tipo, FIFO *filaIO) {
 	}
 }
 /*Atualizar as filas de todos os IOs*/
-void updateBlockedProcesses() {
-	updateFilaDeIO(tiposIO[DISCO], &filaDisco);
-	updateFilaDeIO(tiposIO[FITA_MAGNETICA], &filaFita);
-	updateFilaDeIO(tiposIO[IMPRESSORA], &filaImpressora);
+void updateBlockedProcesses(FILE *f) {
+	updateFilaDeIO(tiposIO[DISCO], &filaDisco, f);
+	updateFilaDeIO(tiposIO[FITA_MAGNETICA], &filaFita, f);
+	updateFilaDeIO(tiposIO[IMPRESSORA], &filaImpressora, f);
 }
 
 /*Adiciona um processo novo à fila de prontos de alta prioridade*/
