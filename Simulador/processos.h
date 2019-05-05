@@ -65,7 +65,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	newProcesso->tempoEntrada = tempo;	
 	newProcesso->tempoServico = getTempoAleatorio(0);
 
-	int quantidadeIO = getValorAleatorio(1, newProcesso->tempoServico);
+	int quantidadeIO = getValorAleatorio(0, newProcesso->tempoServico);
 	newProcesso->quantidadeChamadas = quantidadeIO;
 	newProcesso->chamada = getTempoBloqueioAleatorio(quantidadeIO, newProcesso->tempoServico);
 	for(int i=0;i<newProcesso->quantidadeChamadas;i++){
