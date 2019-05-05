@@ -6,9 +6,9 @@
 #define DISCO 0
 #define FITA_MAGNETICA 1
 #define IMPRESSORA 2
-#define TEMPO_MAXIMO 100
+#define TEMPO_MAXIMO 20
 #define TEMPO_MINIMO 1
-#define TEMPO_MAX_CHEGADA 300
+#define TEMPO_MAX_CHEGADA 60
 
 /*-Variáveis Globais---------------------------------------------------*/
 
@@ -21,7 +21,7 @@ typedef struct _IO {
 } IO;
 
 //tipos de IO e seus respectivos tempos
-IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 15, 1}, {IMPRESSORA, "Impressora", 20, 1}};
+IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 10, 1}, {IMPRESSORA, "Impressora", 15, 1}};
 
 //não pode ser "new" ou "exit" pq sao simbolos da linguagem
 enum statusTypes {novo, ready, running, blocked, terminado};
