@@ -34,7 +34,7 @@ int main () {
 	fprintf(f,"Tempos de chegada de processos gerados: [");
 	printTemposProcessos();
 	while(numProcessosFinalizados<20){
-		fprintf(f,"\n\nQuantum = %d\n",tempoDecorrido);
+		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
 		criaProcessos();
 		processador();		
