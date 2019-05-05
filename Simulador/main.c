@@ -11,7 +11,8 @@
 int tempoDecorrido;//Variável que representa o tempo 
 int tempoExecutando;//
 int tempoGeracaoProcessos[MAX_PROCESSOS];//Vetor com 20 tempos de chegada de processos aleatórios
-int numProcesso; //Índice do último processo criado
+int numProcesso;//Índice do último processo criado
+int processosFinalizados;//Número de processos que já terminaram
 Processo *processoExecutando;
 int tempoExecutadoProcessador;
 FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
@@ -32,18 +33,17 @@ int main () {
 		fprintf(f,"%d ",tempoGeracaoProcessos[i]);
 		if(i==MAX_PROCESSOS-1) fprintf(f,"%d]\n", tempoGeracaoProcessos[i]);
 	}
-	while(true){
+	while(processosFinalizados<20){
 		fprintf(f,"\n\nQuantum = %d\n",tempoDecorrido);
-		updateBlockedProcesses();		
+		fprintf(f,"Numero de processos finalizados=%d\n", processosFinalizados);
+		updateBlockedProcesses(f);		
 		criaProcessos();
 		processador();		
-		atualizarTempoEsperaProcessosReady();
+		atualizarTempoEsperaProcessosReady(f);
 		tempoDecorrido++;
-		if(tempoDecorrido==1000) {
-			fprintf(f,"Interrompendo escalonador\n");
-			exit(-1);
-		}
+		if(tempoDecorrido==400) break;
 	}
+	fprintf(f,"Numero de processos finalizados=%d\n", processosFinalizados);
 }
 
 /*-Functions----------------------------------------------------------*/
@@ -57,7 +57,7 @@ void inicializacao() {
 	processoExecutando = NULL;
 	f = fopen("file.txt", "w");
 	if (f == NULL){
-		printf("Error opening file!\n");
+		fprintf(f,"Error opening file!\n");
 		exit(1);
 	}
 }
@@ -107,6 +107,7 @@ void processador() {
 	if(processoExecutando){
 		if(processoTerminou(processoExecutando)) {
 			fprintf(f,"Processo com PID = %d terminou\n", processoExecutando->PID);
+			processosFinalizados++;
 			escalonarProcesso();
 		}
 		else if(tempoExecutadoProcessador == TEMPO_RR){
@@ -114,8 +115,8 @@ void processador() {
 			interromperProcesso(processoExecutando);
 			escalonarProcesso();
 		}
-		executarProcesso();
 	}
+	if(processoExecutando) executarProcesso();
 	else fprintf(f,"Não há processo disponível para escalonamento\n");
 	
 }
@@ -129,7 +130,7 @@ void geraTempoAleatorioParaCriacaoProcessos() {
 }
 
 void criaProcessos() {
-	if(numProcesso<MAX_PROCESSOS && 
+	while(numProcesso<MAX_PROCESSOS && 
 	  tempoGeracaoProcessos[numProcesso] == tempoDecorrido) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
