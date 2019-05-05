@@ -41,6 +41,7 @@ typedef struct _Processo {
 	int tempoEntrada;//Tempo em que o processo é criado
 	int tempoServico;//Tempo previsto de processamento do processo
 	int tempoExecutado;//Sempre no intervalo [tempoEntrada,tempoServico]
+	int tempoTermino;//Tempo em que o processo termina de executar
 	int tempoEspera;//Tempo que processo está ocioso na fila de baixa prioridade (ready)
 	int tempoBloqueado; //Tempo que o processo está executando I/O
 	int quantidadeChamadas; //Quantidade de IO que o processo irá executar
