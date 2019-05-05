@@ -12,7 +12,8 @@ int tempoDecorrido;//Variável que representa o tempo
 int tempoExecutando;//
 int tempoGeracaoProcessos[MAX_PROCESSOS];//Vetor com 20 tempos de chegada de processos aleatórios
 int numProcesso;//Índice do último processo criado
-int processosFinalizados;//Número de processos que já terminaram
+int numProcessosFinalizados;//Número de processos que já terminaram
+Processo processosFinalizados[MAX_PROCESSOS];//Vetor que guarda a ordem que os processos finalizaram
 Processo *processoExecutando;
 int tempoExecutadoProcessador;
 FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
@@ -24,26 +25,23 @@ void escalonarProcesso();
 void processador();
 void criaProcessos();
 int compare();
+void printTemposProcessos();
+void printProcessosFinalizados();
 /*-Main---------------------------------------------------------------*/
 int main () {
 	inicializacao();
 	geraTempoAleatorioParaCriacaoProcessos();
 	fprintf(f,"Tempos de chegada de processos gerados: [");
-	for(int i=0;i<MAX_PROCESSOS; i++) {
-		fprintf(f,"%d ",tempoGeracaoProcessos[i]);
-		if(i==MAX_PROCESSOS-1) fprintf(f,"%d]\n", tempoGeracaoProcessos[i]);
-	}
-	while(processosFinalizados<20){
+	printTemposProcessos();
+	while(numProcessosFinalizados<20){
 		fprintf(f,"\n\nQuantum = %d\n",tempoDecorrido);
-		fprintf(f,"Numero de processos finalizados=%d\n", processosFinalizados);
 		updateBlockedProcesses(f);		
 		criaProcessos();
 		processador();		
 		atualizarTempoEsperaProcessosReady(f);
 		tempoDecorrido++;
-		if(tempoDecorrido==400) break;
 	}
-	fprintf(f,"Numero de processos finalizados=%d\n", processosFinalizados);
+	printProcessosFinalizados();
 }
 
 /*-Functions----------------------------------------------------------*/
@@ -81,6 +79,7 @@ void executarProcesso() {
 	}
 }
 
+/*Se não houver processos na fila de prontos, processoExecutando == NULL*/
 void escalonarProcesso() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = selecionarProximoProcessoAExecutar();
@@ -88,26 +87,17 @@ void escalonarProcesso() {
 	
 }
 
+/*Faz o papel do processador: escalona e executa processos*/
 void processador() {
-	/*if(processoExecutando){
-		if(processoTerminou(processoExecutando)){
-			fprintf(f,"Processo com PID = %d terminou\n", processoExecutando->PID);
-			escalonarProcesso();	
-		}
-		else if(tempoExecutadoProcessador == TEMPO_RR) {
-			fprintf(f,"Preemptando processo com PID = %d\n",processoExecutando->PID);
-			interromperProcesso(processoExecutando);
-			escalonarProcesso();
-		}
-	else executarProcesso();*/
-	
 	/*Se no quantum anterior ninguém executou*/
 	if(!processoExecutando) escalonarProcesso();
 	/*Se algum processo foi escalonado*/
 	if(processoExecutando){
 		if(processoTerminou(processoExecutando)) {
 			fprintf(f,"Processo com PID = %d terminou\n", processoExecutando->PID);
-			processosFinalizados++;
+			processoExecutando->tempoTermino = tempoDecorrido - processoExecutando->tempoEntrada;
+			processosFinalizados[numProcessosFinalizados] = *processoExecutando;
+			numProcessosFinalizados++;
 			escalonarProcesso();
 		}
 		else if(tempoExecutadoProcessador == TEMPO_RR){
@@ -145,4 +135,23 @@ int compare(const void * elem1, const void * elem2) {
     if (f > s) return  1;
     if (f < s) return -1;
     return 0;
+}
+
+void printTemposProcessos(){
+	fprintf(f,"Tempos processos:[");
+	for(int i=0;i<MAX_PROCESSOS; i++) {
+		fprintf(f,"%d ",tempoGeracaoProcessos[i]);
+		if(i==MAX_PROCESSOS-1) fprintf(f,"%d]\n", tempoGeracaoProcessos[i]);
+	}
+}
+
+void printProcessosFinalizados(){
+	fprintf(f,"Processos finalizados:[");
+	for(int i=0;i<MAX_PROCESSOS;i++){
+		fprintf(f,"(PID=%d,Turnaround=%d) ", processosFinalizados[i].PID, processosFinalizados[i].tempoExecutado);
+		if(i==MAX_PROCESSOS-1) {
+			fprintf(f,"(PID=%d,Turnaround=%d)]\n",
+				processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);	
+		}
+	}
 }
