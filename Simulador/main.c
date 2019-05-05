@@ -33,7 +33,7 @@ int main () {
 	geraTempoAleatorioParaCriacaoProcessos();
 	fprintf(f,"Tempos de chegada de processos gerados: [");
 	printTemposProcessos();
-	while(numProcessosFinalizados<20){
+	while(numProcessosFinalizados<MAX_PROCESSOS){
 		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
 		criaProcessos();
