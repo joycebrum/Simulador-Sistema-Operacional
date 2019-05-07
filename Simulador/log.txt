@@ -1,0 +1,2176 @@
+Tempos processos:[8 9 15 16 16 19 20 26 29 31 32 33 33 34 37 45 46 52 55 56 56]
+
+
+Instante = 0
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 1
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 2
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 3
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 4
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 5
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 6
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 7
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 8
+Adicionando processo com PID = 10 à fila de alta prioridade
+Escalonando processo com PID = 10
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 9
+Adicionando processo com PID = 11 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 10
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 12
+Preemptando processo com PID = 10
+Escalonando processo com PID = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: [10 ]
+
+
+Instante = 13
+Interrompendo processo com PID = 11 para IO = Fita Magnética. Processo retornará no Quantum = 23
+Escalonando processo com PID = 10
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 14
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 15
+Fila de bloqueados IO Fita Magnética: [ 11]
+Adicionando processo com PID = 12 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 10                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 16
+Fila de bloqueados IO Fita Magnética: [ 11]
+Adicionando processo com PID = 13 à fila de alta prioridade
+Adicionando processo com PID = 14 à fila de alta prioridade
+Processo com PID = 10 terminou
+Escalonando processo com PID = 12
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [13 14 ]
+Fila de baixa prioridade: []
+
+
+Instante = 17
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [13 14 ]
+Fila de baixa prioridade: []
+
+
+Instante = 18
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [13 14 ]
+Fila de baixa prioridade: []
+
+
+Instante = 19
+Fila de bloqueados IO Fita Magnética: [ 11]
+Adicionando processo com PID = 15 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [13 14 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 20
+Fila de bloqueados IO Fita Magnética: [ 11]
+Adicionando processo com PID = 16 à fila de alta prioridade
+Preemptando processo com PID = 12
+Escalonando processo com PID = 13
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [14 15 16 ]
+Fila de baixa prioridade: [12 ]
+
+
+Instante = 21
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [14 15 16 ]
+Fila de baixa prioridade: [12 ]
+
+
+Instante = 22
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [14 15 16 ]
+Fila de baixa prioridade: [12 ]
+
+
+Instante = 23
+Fila de bloqueados IO Fita Magnética: [ 11]
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [14 15 16 11 ]
+Fila de baixa prioridade: [12 ]
+
+
+Instante = 24
+Preemptando processo com PID = 13
+Escalonando processo com PID = 14
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 14                           |
+|Tempo de Serviço = 3              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [15 16 11 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 25
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 14                           |
+|Tempo de Serviço = 3              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [15 16 11 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 26
+Adicionando processo com PID = 17 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 14                           |
+|Tempo de Serviço = 3              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [15 16 11 17 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 27
+Processo com PID = 14 terminou
+Escalonando processo com PID = 15
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [16 11 17 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 28
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [16 11 17 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 29
+Adicionando processo com PID = 18 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [16 11 17 18 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 30
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [16 11 17 18 ]
+Fila de baixa prioridade: [12 13 ]
+
+
+Instante = 31
+Adicionando processo com PID = 19 à fila de alta prioridade
+Preemptando processo com PID = 15
+Escalonando processo com PID = 16
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 16                           |
+|Tempo de Serviço = 1              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [11 17 18 19 ]
+Fila de baixa prioridade: [12 13 15 ]
+
+
+Instante = 32
+Adicionando processo com PID = 20 à fila de alta prioridade
+Processo com PID = 16 terminou
+Escalonando processo com PID = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [17 18 19 20 ]
+Fila de baixa prioridade: [12 13 15 ]
+
+
+Instante = 33
+Adicionando processo com PID = 21 à fila de alta prioridade
+Adicionando processo com PID = 22 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [17 18 19 20 21 22 ]
+Fila de baixa prioridade: [12 13 15 ]
+
+
+Instante = 34
+Adicionando processo com PID = 23 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [17 18 19 20 21 22 23 ]
+Fila de baixa prioridade: [12 13 15 ]
+
+
+Instante = 35
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [17 18 19 20 21 22 23 ]
+Fila de baixa prioridade: [12 13 15 ]
+
+
+Instante = 36
+Preemptando processo com PID = 11
+Escalonando processo com PID = 17
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [18 19 20 21 22 23 ]
+Fila de baixa prioridade: [12 13 15 11 ]
+
+
+Instante = 37
+Adicionando processo com PID = 24 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [18 19 20 21 22 23 24 ]
+Fila de baixa prioridade: [12 13 15 11 ]
+
+
+Instante = 38
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [18 19 20 21 22 23 24 ]
+Fila de baixa prioridade: [12 13 15 11 ]
+
+
+Instante = 39
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [18 19 20 21 22 23 24 ]
+Fila de baixa prioridade: [12 13 15 11 ]
+
+
+Instante = 40
+Preemptando processo com PID = 17
+Escalonando processo com PID = 18
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 ]
+Fila de baixa prioridade: [13 15 11 17 ]
+
+
+Instante = 41
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: [15 11 17 ]
+
+
+Instante = 42
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 13 ]
+Fila de baixa prioridade: [15 11 17 ]
+
+
+Instante = 43
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 13 ]
+Fila de baixa prioridade: [15 11 17 ]
+
+
+Instante = 44
+Preemptando processo com PID = 18
+Escalonando processo com PID = 19
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 13 ]
+Fila de baixa prioridade: [11 17 18 ]
+
+
+Instante = 45
+Adicionando processo com PID = 25 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 13 15 25 ]
+Fila de baixa prioridade: [17 18 ]
+
+
+Instante = 46
+Adicionando processo com PID = 26 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [17 18 ]
+
+
+Instante = 47
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [17 18 ]
+
+
+Instante = 48
+Preemptando processo com PID = 19
+Escalonando processo com PID = 20
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [17 18 19 ]
+
+
+Instante = 49
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [17 18 19 ]
+
+
+Instante = 50
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [17 18 19 ]
+
+
+Instante = 51
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 13 15 25 11 26 ]
+Fila de baixa prioridade: [18 19 ]
+
+
+Instante = 52
+Adicionando processo com PID = 27 à fila de alta prioridade
+Preemptando processo com PID = 20
+Escalonando processo com PID = 21
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 13 15 25 11 26 17 27 ]
+Fila de baixa prioridade: [18 19 20 ]
+
+
+Instante = 53
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 13 15 25 11 26 17 27 ]
+Fila de baixa prioridade: [18 19 20 ]
+
+
+Instante = 54
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 13 15 25 11 26 17 27 ]
+Fila de baixa prioridade: [19 20 ]
+
+
+Instante = 55
+Adicionando processo com PID = 28 à fila de alta prioridade
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 13 15 25 11 26 17 27 18 28 ]
+Fila de baixa prioridade: [19 20 ]
+
+
+Instante = 56
+Adicionando processo com PID = 29 à fila de alta prioridade
+Preemptando processo com PID = 21
+Escalonando processo com PID = 22
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 13 15 25 11 26 17 27 18 28 29 ]
+Fila de baixa prioridade: [20 21 ]
+
+
+Instante = 57
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 13 15 25 11 26 17 27 18 28 29 19 ]
+Fila de baixa prioridade: [21 ]
+
+
+Instante = 58
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 13 15 25 11 26 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 59
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 13 15 25 11 26 17 27 18 28 29 19 20 21 ]
+Fila de baixa prioridade: []
+
+
+Instante = 60
+Preemptando processo com PID = 22
+Escalonando processo com PID = 23
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 23                           |
+|Tempo de Serviço = 5              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [24 12 13 15 25 11 26 17 27 18 28 29 19 20 21 ]
+Fila de baixa prioridade: []
+
+
+Instante = 61
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 23                           |
+|Tempo de Serviço = 5              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [24 12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 ]
+Fila de baixa prioridade: []
+
+
+Instante = 62
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 23                           |
+|Tempo de Serviço = 5              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [24 12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 ]
+Fila de baixa prioridade: []
+
+
+Instante = 63
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 23                           |
+|Tempo de Serviço = 5              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [24 12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 ]
+Fila de baixa prioridade: []
+
+
+Instante = 64
+Preemptando processo com PID = 23
+Escalonando processo com PID = 24
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 ]
+Fila de baixa prioridade: []
+
+
+Instante = 65
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 ]
+Fila de baixa prioridade: []
+
+
+Instante = 66
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 ]
+Fila de baixa prioridade: []
+
+
+Instante = 67
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [12 13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 ]
+Fila de baixa prioridade: []
+
+
+Instante = 68
+Preemptando processo com PID = 24
+Escalonando processo com PID = 12
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 ]
+Fila de baixa prioridade: []
+
+
+Instante = 69
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 70
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 71
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [13 15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 72
+Preemptando processo com PID = 12
+Escalonando processo com PID = 13
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 73
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 74
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 13                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [15 25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 75
+Processo com PID = 13 terminou
+Escalonando processo com PID = 15
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 76
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 77
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 78
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [25 11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 79
+Preemptando processo com PID = 15
+Escalonando processo com PID = 25
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 25                           |
+|Tempo de Serviço = 2              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [11 26 17 27 18 28 29 19 20 21 22 23 24 12 ]
+Fila de baixa prioridade: []
+
+
+Instante = 80
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 25                           |
+|Tempo de Serviço = 2              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [11 26 17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 81
+Processo com PID = 25 terminou
+Escalonando processo com PID = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [26 17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 82
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [26 17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 83
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [26 17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 84
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [26 17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 85
+Preemptando processo com PID = 11
+Escalonando processo com PID = 26
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 26                           |
+|Tempo de Serviço = 2              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 21 22 23 24 12 15 ]
+Fila de baixa prioridade: []
+
+
+Instante = 86
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 26                           |
+|Tempo de Serviço = 2              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 87
+Processo com PID = 26 terminou
+Escalonando processo com PID = 17
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 88
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 89
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 90
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 91
+Preemptando processo com PID = 17
+Escalonando processo com PID = 27
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 21 22 23 24 12 15 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 92
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 21 22 23 24 12 15 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 93
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 21 22 23 24 12 15 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 94
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 21 22 23 24 12 15 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 95
+Preemptando processo com PID = 27
+Escalonando processo com PID = 18
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 21 22 23 24 12 15 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 96
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 21 22 23 24 12 15 11 17 27 ]
+Fila de baixa prioridade: []
+
+
+Instante = 97
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 21 22 23 24 12 15 11 17 27 ]
+Fila de baixa prioridade: []
+
+
+Instante = 98
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 21 22 23 24 12 15 11 17 27 ]
+Fila de baixa prioridade: []
+
+
+Instante = 99
+Preemptando processo com PID = 18
+Escalonando processo com PID = 28
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 21 22 23 24 12 15 11 17 27 ]
+Fila de baixa prioridade: []
+
+
+Instante = 100
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 21 22 23 24 12 15 11 17 27 18 ]
+Fila de baixa prioridade: []
+
+
+Instante = 101
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 21 22 23 24 12 15 11 17 27 18 ]
+Fila de baixa prioridade: []
+
+
+Instante = 102
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 21 22 23 24 12 15 11 17 27 18 ]
+Fila de baixa prioridade: []
+
+
+Instante = 103
+Preemptando processo com PID = 28
+Escalonando processo com PID = 29
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 1                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 15 11 17 27 18 ]
+Fila de baixa prioridade: []
+
+
+Instante = 104
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 2                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 15 11 17 27 18 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 105
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 3                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 15 11 17 27 18 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 106
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 4                |
+-------------------------------------
+Fila de alta prioridade: [19 20 21 22 23 24 12 15 11 17 27 18 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 107
+Preemptando processo com PID = 29
+Escalonando processo com PID = 19
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 15 11 17 27 18 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 108
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 15 11 17 27 18 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 109
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 15 11 17 27 18 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 110
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [20 21 22 23 24 12 15 11 17 27 18 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 111
+Preemptando processo com PID = 19
+Escalonando processo com PID = 20
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 15 11 17 27 18 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 112
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 15 11 17 27 18 28 29 19 ]
+Fila de baixa prioridade: []
+
+
+Instante = 113
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 15 11 17 27 18 28 29 19 ]
+Fila de baixa prioridade: []
+
+
+Instante = 114
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [21 22 23 24 12 15 11 17 27 18 28 29 19 ]
+Fila de baixa prioridade: []
+
+
+Instante = 115
+Preemptando processo com PID = 20
+Escalonando processo com PID = 21
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 15 11 17 27 18 28 29 19 ]
+Fila de baixa prioridade: []
+
+
+Instante = 116
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 21                           |
+|Tempo de Serviço = 6              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [22 23 24 12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 117
+Processo com PID = 21 terminou
+Escalonando processo com PID = 22
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 118
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 119
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 22                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [23 24 12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 120
+Processo com PID = 22 terminou
+Escalonando processo com PID = 23
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 23                           |
+|Tempo de Serviço = 5              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [24 12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 121
+Processo com PID = 23 terminou
+Escalonando processo com PID = 24
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 122
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 123
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 124
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [12 15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 125
+Preemptando processo com PID = 24
+Escalonando processo com PID = 12
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 12                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [15 11 17 27 18 28 29 19 20 ]
+Fila de baixa prioridade: []
+
+
+Instante = 126
+Processo com PID = 12 terminou
+Escalonando processo com PID = 15
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 15                           |
+|Tempo de Serviço = 9              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [11 17 27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 127
+Processo com PID = 15 terminou
+Escalonando processo com PID = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 128
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 129
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 12                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 130
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 13                |
+-------------------------------------
+Fila de alta prioridade: [17 27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 131
+Preemptando processo com PID = 11
+Escalonando processo com PID = 17
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 132
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 24 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 133
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 24 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 134
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 12                |
+-------------------------------------
+Fila de alta prioridade: [27 18 28 29 19 20 24 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 135
+Preemptando processo com PID = 17
+Escalonando processo com PID = 27
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 24 11 ]
+Fila de baixa prioridade: []
+
+
+Instante = 136
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 137
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 27                           |
+|Tempo de Serviço = 7              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [18 28 29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 138
+Processo com PID = 27 terminou
+Escalonando processo com PID = 18
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 139
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 140
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 18                           |
+|Tempo de Serviço = 11              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [28 29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 141
+Processo com PID = 18 terminou
+Escalonando processo com PID = 28
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 142
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 143
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 144
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [29 19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 145
+Preemptando processo com PID = 28
+Escalonando processo com PID = 29
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 5                |
+-------------------------------------
+Fila de alta prioridade: [19 20 24 11 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 146
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 6                |
+-------------------------------------
+Fila de alta prioridade: [19 20 24 11 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 147
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 7                |
+-------------------------------------
+Fila de alta prioridade: [19 20 24 11 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 148
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 8                |
+-------------------------------------
+Fila de alta prioridade: [19 20 24 11 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 149
+Preemptando processo com PID = 29
+Escalonando processo com PID = 19
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [20 24 11 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 150
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 19                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [20 24 11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 151
+Processo com PID = 19 terminou
+Escalonando processo com PID = 20
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [24 11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 152
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 20                           |
+|Tempo de Serviço = 10              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [24 11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 153
+Processo com PID = 20 terminou
+Escalonando processo com PID = 24
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 154
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 155
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 156
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 12                |
+-------------------------------------
+Fila de alta prioridade: [11 17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 157
+Preemptando processo com PID = 24
+Escalonando processo com PID = 11
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 14                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 158
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 15                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 159
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 11                           |
+|Tempo de Serviço = 16              |
+|Tempo executado = 16                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 160
+Processo com PID = 11 terminou
+Escalonando processo com PID = 17
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 13                |
+-------------------------------------
+Fila de alta prioridade: [28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 161
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 14                |
+-------------------------------------
+Fila de alta prioridade: [28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 162
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 15                |
+-------------------------------------
+Fila de alta prioridade: [28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 163
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 16                |
+-------------------------------------
+Fila de alta prioridade: [28 29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 164
+Preemptando processo com PID = 17
+Escalonando processo com PID = 28
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 165
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [29 24 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 166
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [29 24 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 167
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 12                |
+-------------------------------------
+Fila de alta prioridade: [29 24 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 168
+Preemptando processo com PID = 28
+Escalonando processo com PID = 29
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 9                |
+-------------------------------------
+Fila de alta prioridade: [24 17 ]
+Fila de baixa prioridade: []
+
+
+Instante = 169
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 10                |
+-------------------------------------
+Fila de alta prioridade: [24 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 170
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 11                |
+-------------------------------------
+Fila de alta prioridade: [24 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 171
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 12                |
+-------------------------------------
+Fila de alta prioridade: [24 17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 172
+Preemptando processo com PID = 29
+Escalonando processo com PID = 24
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 13                |
+-------------------------------------
+Fila de alta prioridade: [17 28 ]
+Fila de baixa prioridade: []
+
+
+Instante = 173
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 14                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 174
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 15                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 175
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 16                |
+-------------------------------------
+Fila de alta prioridade: [17 28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 176
+Preemptando processo com PID = 24
+Escalonando processo com PID = 17
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 17                           |
+|Tempo de Serviço = 17              |
+|Tempo executado = 17                |
+-------------------------------------
+Fila de alta prioridade: [28 29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 177
+Processo com PID = 17 terminou
+Escalonando processo com PID = 28
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 13                |
+-------------------------------------
+Fila de alta prioridade: [29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 178
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 28                           |
+|Tempo de Serviço = 14              |
+|Tempo executado = 14                |
+-------------------------------------
+Fila de alta prioridade: [29 24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 179
+Processo com PID = 28 terminou
+Escalonando processo com PID = 29
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 13                |
+-------------------------------------
+Fila de alta prioridade: [24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 180
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 14                |
+-------------------------------------
+Fila de alta prioridade: [24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 181
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 15                |
+-------------------------------------
+Fila de alta prioridade: [24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 182
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 16                |
+-------------------------------------
+Fila de alta prioridade: [24 ]
+Fila de baixa prioridade: []
+
+
+Instante = 183
+Preemptando processo com PID = 29
+Escalonando processo com PID = 24
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 17                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 184
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 18                |
+-------------------------------------
+Fila de alta prioridade: [29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 185
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 24                           |
+|Tempo de Serviço = 19              |
+|Tempo executado = 19                |
+-------------------------------------
+Fila de alta prioridade: [29 ]
+Fila de baixa prioridade: []
+
+
+Instante = 186
+Processo com PID = 24 terminou
+Escalonando processo com PID = 29
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 17                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 187
+Informações do PCB do processo em execução:
+-------------------------------------
+|PID = 29                           |
+|Tempo de Serviço = 18              |
+|Tempo executado = 18                |
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+
+
+Instante = 188
+Processo com PID = 29 terminou
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Processos finalizados:[(PID=10,Turnaround=8) (PID=14,Turnaround=11) (PID=16,Turnaround=12) (PID=13,Turnaround=59) (PID=25,Turnaround=36) (PID=26,Turnaround=41) (PID=21,Turnaround=84) (PID=22,Turnaround=87) (PID=23,Turnaround=87) (PID=12,Turnaround=111) (PID=15,Turnaround=108) (PID=27,Turnaround=86) (PID=18,Turnaround=112) (PID=19,Turnaround=120) (PID=20,Turnaround=121) (PID=11,Turnaround=151) (PID=17,Turnaround=151) (PID=28,Turnaround=124) (PID=24,Turnaround=149) (PID=29,Turnaround=132) ]
