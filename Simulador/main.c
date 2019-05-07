@@ -31,13 +31,17 @@ void printProcessosFinalizados();
 int main () {
 	inicializacao();
 	geraTempoAleatorioParaCriacaoProcessos();
-	fprintf(f,"Tempos de chegada de processos gerados: [");
 	printTemposProcessos();
 	while(numProcessosFinalizados<MAX_PROCESSOS){
 		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
-		updateBlockedProcesses(f);		
+		puts("Antes updateBlockedProcesses");
+		updateBlockedProcesses(f);
+		puts("Antes criaProcessos");		
 		criaProcessos();
-		processador();		
+		puts("Antes processador");
+		processador();
+		puts("Antes atualizarTempoEspera");
+		puts("");		
 		atualizarTempoEsperaProcessosReady(f);
 		tempoDecorrido++;
 	}
@@ -148,10 +152,9 @@ void printTemposProcessos(){
 void printProcessosFinalizados(){
 	fprintf(f,"Processos finalizados:[");
 	for(int i=0;i<MAX_PROCESSOS;i++){
-		fprintf(f,"(PID=%d,Turnaround=%d) ", processosFinalizados[i].PID, processosFinalizados[i].tempoExecutado);
+		fprintf(f,"(PID=%d,Turnaround=%d) ", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
 		if(i==MAX_PROCESSOS-1) {
-			fprintf(f,"(PID=%d,Turnaround=%d)]\n",
-				processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);	
+			fprintf(f,"]\n");
 		}
 	}
 }
