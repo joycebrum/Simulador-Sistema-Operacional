@@ -34,14 +34,9 @@ int main () {
 	printTemposProcessos();
 	while(numProcessosFinalizados<MAX_PROCESSOS){
 		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
-		puts("Antes updateBlockedProcesses");
-		updateBlockedProcesses(f);
-		puts("Antes criaProcessos");		
+		updateBlockedProcesses(f);		
 		criaProcessos();
-		puts("Antes processador");
-		processador();
-		puts("Antes atualizarTempoEspera");
-		puts("");		
+		processador();	
 		atualizarTempoEsperaProcessosReady(f);
 		tempoDecorrido++;
 	}
