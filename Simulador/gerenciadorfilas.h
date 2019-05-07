@@ -1,7 +1,7 @@
 #ifndef gerenciadorfilas
 #define gerenciadorfilas
 
-#define TEMPO_MAXIMO_BAIXA_PRIORIDADE 100
+#define TEMPO_MAXIMO_BAIXA_PRIORIDADE TEMPO_MAXIMO
 #include <stddef.h>
 #include "fifo.h"
 #include "processos.h"
@@ -25,7 +25,9 @@ void initFilas() {
 
 void atualizarTempoEsperaProcessosReady(FILE *f) {
 	fprintf(f,"Fila de alta prioridade: [");
+	puts("To dentro do atualizaTempoEspera");
 	if(!empty(&altaPrioridade)) {
+		puts("To dentro do altaPrioridade");
 		int i = altaPrioridade.head;
 		while(true) {
 			Processo *processo = altaPrioridade.queue[i];
@@ -34,22 +36,30 @@ void atualizarTempoEsperaProcessosReady(FILE *f) {
 			if(i == altaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
 		}
+		puts("To saindo do altaPrioridade");
 	}
 	fprintf(f,"]\n");
 	fprintf(f,"Fila de baixa prioridade: [");
 	if(!empty(&baixaPrioridade)) {
+		puts("To dentro do baixaPrioridade");
 		/*Se tempoEspera>TEMPO_MAXIMA_BAIXA_PRIORIDADE => Passa processo para fila de alta prioridade*/
-		if(baixaPrioridade.queue[0]->tempoEspera>TEMPO_MAXIMO_BAIXA_PRIORIDADE) add(&altaPrioridade, pop(&baixaPrioridade));
+		if(baixaPrioridade.queue[baixaPrioridade.head]->tempoEspera>TEMPO_MAXIMO_BAIXA_PRIORIDADE) {
+			add(&altaPrioridade, pop(&baixaPrioridade));
+		}
 		int i = baixaPrioridade.head;
-		while(true) {
+		while(!empty(&baixaPrioridade)) {
+			puts("To dentro do while");
 			Processo *processo = baixaPrioridade.queue[i];
 			increaseWaitTimeProcess(processo);
 			fprintf(f,"%d ", baixaPrioridade.queue[i]->PID);
 			if(i == baixaPrioridade.tail) break;
 			i=(i+1)%MAX_PROCESSOS;
+			puts("To saindo do while");
 		}
+		puts("To saindo do baixaPrioridade");
 	}
 	fprintf(f,"]\n");
+	puts("To saindo do atualizaTempoEspera");
 	
 	
 }
