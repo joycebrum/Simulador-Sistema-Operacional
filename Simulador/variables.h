@@ -10,6 +10,14 @@
 #define TEMPO_MINIMO 1
 #define TEMPO_MAX_CHEGADA 60
 
+// Gerenciados de Memoria
+#define MEM_PRINCIPAL = 64
+#define INTERV_TEMP_PROC = 3
+#define INTERV_PAGS = 3
+#define WSL = 4
+#define MAX_VIRT_PAGE = 64
+
+
 /*-Variáveis Globais---------------------------------------------------*/
 
 /*Tupla que indica o tipo de IO e a duração*/
