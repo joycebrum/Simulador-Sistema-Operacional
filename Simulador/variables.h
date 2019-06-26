@@ -32,7 +32,7 @@ typedef struct _IO {
 IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 10, 1}, {IMPRESSORA, "Impressora", 15, 1}};
 
 //não pode ser "new" ou "exit" pq sao simbolos da linguagem
-enum statusTypes {novo, ready, running, blocked, terminado};
+enum statusTypes {novo, ready, running, blocked, suspenso, terminado};
 
 
 /*Tuplas da forma (IO, tempo), onde tempo*/
