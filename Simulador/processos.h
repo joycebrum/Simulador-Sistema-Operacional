@@ -18,6 +18,12 @@ int getValorAleatorio(int minimo, int maximo) {
 	return rand() % (maximo + 1 - minimo) + minimo;
 }
 
+
+/*Gera o numero de páginas do processo entre 1 e 64*/
+int gera_num_paginas() { 
+	return getValorAleatorio(1, MAX_VIRT_PAGE);
+}
+
 /*Gera um valor aleatório entre [TEMPO_MINIMO,TEMO_MAXIMO]*/
 int getTempoAleatorio(int tempoMaxEspecifico) {
 	if(tempoMaxEspecifico == 0) {
@@ -68,8 +74,16 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	int quantidadeIO = getValorAleatorio(0, newProcesso->tempoServico);
 	newProcesso->quantidadeChamadas = quantidadeIO;
 	newProcesso->chamada = getTempoBloqueioAleatorio(quantidadeIO, newProcesso->tempoServico);
-	for(int i=0;i<newProcesso->quantidadeChamadas;i++){
-	}
+	
+	newProcesso->numPaginas = gera_num_paginas();
+	newProcesso->tabelaPaginas = (Tabela_Paginas *)malloc(MAX_VIRT_PAGE*sizeof(Tabela_Paginas));
+	newProcesso->numPaginasAlocadas = 0;
+	for(int i=0; i < newProcesso->numPaginas;i++){
+		newProcesso->tabelaPaginas[i].num_pagina = i;
+		newProcesso->tabelaPaginas[i].num_frame = -1;
+	} 
+	//initLRU(newProcesso->gerenciadorPaginas);
+
 	return newProcesso;
 }
 
@@ -118,7 +132,7 @@ void printProcesso(Processo *processo) {
 	fprintf(f,"|PID = %d \n", processo->PID);
 	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
 	fprintf(f,"|Quantidade IO = %d \n", processo->quantidadeChamadas);
-	fprintf(f,"|Paginas Referenciadas = [ ] \n", processo->tempoExecutado);
+	fprintf(f,"|Paginas Referenciadas = [ ] \n");
 	fprintf(f,"-------------------------------------\n");
 	
 	/*int i = 0;

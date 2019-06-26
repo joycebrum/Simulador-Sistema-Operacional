@@ -7,6 +7,7 @@
 #include "fifo.h"
 #include "gerenciadorfilas.h"
 
+
 /*-Global Variables---------------------------------------------------*/
 int tempoDecorrido;//Variável que representa o tempo 
 int tempoExecutando;//

@@ -1,6 +1,8 @@
 #ifndef variables
 #define variables
 
+#include <stdio.h>
+
 #define MAX_PROCESSOS 20
 #define TEMPO_RR 4
 #define DISCO 0
@@ -11,11 +13,11 @@
 #define TEMPO_MAX_CHEGADA 60
 
 // Gerenciados de Memoria
-#define MEM_PRINCIPAL = 64
-#define INTERV_TEMP_PROC = 3
-#define INTERV_PAGS = 3
-#define WSL = 4
-#define MAX_VIRT_PAGE = 64 // tamanho da tabela de paginas
+#define MEM_PRINCIPAL 64
+#define INTERV_TEMP_PROC 3
+#define INTERV_PAGS 3
+#define WSL 4
+#define MAX_VIRT_PAGE 64 // tamanho da tabela de paginas
 
 
 /*-Variáveis Globais---------------------------------------------------*/
@@ -65,11 +67,11 @@ typedef struct _Processo {
 	int numPaginasAlocadas; 
 	Tabela_Paginas* tabelaPaginas;
 	int* paginasReferenciadas;
-	FIFO *LRU
+	//LRU *gerenciadorPaginas;
 } Processo;
 
 
-int memoria[MEM_PRINCIPAL] //em frames
+int memoria[MEM_PRINCIPAL]; //em frames
 
 FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
 
