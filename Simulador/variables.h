@@ -61,10 +61,10 @@ typedef struct _Processo {
 	int quantidadeChamadas; //Quantidade de IO que o processo irá executar
 	TempoChamadaIO *chamada; //Vetor com os tempos de chamada de cada IO
 	// parte referente a gerenciamento de memoria
-	int num_paginas;
-	int num_paginas_alocadas; 
-	Tabela_Paginas* tabela_paginas;
-	int* paginas_referenciadas;
+	int numPaginas;
+	int numPaginasAlocadas; 
+	Tabela_Paginas* tabelaPaginas;
+	int* paginasReferenciadas;
 	FIFO *LRU
 } Processo;
 
