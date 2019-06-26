@@ -56,6 +56,9 @@ typedef struct _Processo {
 	TempoChamadaIO *chamada; //Vetor com os tempos de chamada de cada IO
 } Processo;
 
+
+int memoria[MEM_PRINCIPAL] //em frames
+
 FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
 
 #endif
