@@ -109,7 +109,8 @@ void criaProcessos() {
 	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
-		fprintf(f,"Criando e adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
+		printProcesso(processo);
+		fprintf(f,"Adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
 		numProcesso++;
 	}
 }

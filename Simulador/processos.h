@@ -112,16 +112,19 @@ bool processoTerminou(Processo *processo) {
 }
 
 // para exibição de resultado
-void printProcesso(Processo processo) {
-	printf("PID: %d, tempo serviço: %d\n", processo.PID, processo.tempoServico);
-
-	int quantidade = processo.quantidadeChamadas;
-	printf("quantidade IO %d \n", quantidade);
-	int i = 0;
+void printProcesso(Processo *processo) {
+	fprintf(f,"Informações do processo criado:\n");
+	fprintf(f,"-------------------------------------\n");
+	fprintf(f,"|PID = %d \n", processo->PID);
+	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
+	fprintf(f,"|Quantidade IO = %d \n", processo->quantidadeChamadas);
+	fprintf(f,"|Paginas Referenciadas = [ ] \n", processo->tempoExecutado);
+	fprintf(f,"-------------------------------------\n");
+	
+	/*int i = 0;
 	for (i = 0; i < quantidade; i++) {
-		printf("(%s, %d) ",  processo.chamada[i].tipoIO.nomeTipo, processo.chamada[i].tempoBloqueio);
-	}
-	printf("\n");
+		fprintf(f,"(%s, %d) ",  processo.chamada[i].tipoIO.nomeTipo, processo.chamada[i].tempoBloqueio);
+	}*/
 }
 
 #endif
