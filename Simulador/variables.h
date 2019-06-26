@@ -15,7 +15,7 @@
 #define INTERV_TEMP_PROC = 3
 #define INTERV_PAGS = 3
 #define WSL = 4
-#define MAX_VIRT_PAGE = 64
+#define MAX_VIRT_PAGE = 64 // tamanho da tabela de paginas
 
 
 /*-Variáveis Globais---------------------------------------------------*/
@@ -41,6 +41,12 @@ typedef struct _TempoChamadaIO {
 	int tempoBloqueio;
 } TempoChamadaIO;
 
+/*Struct da Tabela de Páginas*/
+typedef struct _Tabela_Paginas{
+    int num_pagina;
+    int num_frame; // -1 se não tiver carregada
+} Tabela_Paginas;
+
 typedef struct _Processo {
 	int PID;
 	int PPID;
@@ -54,6 +60,12 @@ typedef struct _Processo {
 	int tempoBloqueado; //Tempo que o processo está executando I/O
 	int quantidadeChamadas; //Quantidade de IO que o processo irá executar
 	TempoChamadaIO *chamada; //Vetor com os tempos de chamada de cada IO
+	// parte referente a gerenciamento de memoria
+	int num_paginas;
+	int num_paginas_alocadas; 
+	Tabela_Paginas* tabela_paginas;
+	int* paginas_referenciadas;
+	FIFO *LRU
 } Processo;
 
 
