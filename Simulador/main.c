@@ -10,17 +10,14 @@
 /*-Global Variables---------------------------------------------------*/
 int tempoDecorrido;//Variável que representa o tempo 
 int tempoExecutando;//
-int tempoGeracaoProcessos[MAX_PROCESSOS];//Vetor com 20 tempos de chegada de processos aleatórios
 int numProcesso;//Índice do último processo criado
 int numProcessosFinalizados;//Número de processos que já terminaram
 Processo processosFinalizados[MAX_PROCESSOS];//Vetor que guarda a ordem que os processos finalizaram
 Processo *processoExecutando;
 int tempoExecutadoProcessador;
-FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
 
 void inicializacao();
 void executarProcesso();
-void geraTempoAleatorioParaCriacaoProcessos();
 void escalonarProcesso();
 void processador();
 void criaProcessos();
@@ -30,8 +27,6 @@ void printProcessosFinalizados();
 /*-Main---------------------------------------------------------------*/
 int main () {
 	inicializacao();
-	geraTempoAleatorioParaCriacaoProcessos();
-	printTemposProcessos();
 	while(numProcessosFinalizados<MAX_PROCESSOS){
 		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
@@ -110,20 +105,11 @@ void processador() {
 	
 }
 
-void geraTempoAleatorioParaCriacaoProcessos() {
-	int i;
-	for(i=0;i<MAX_PROCESSOS;i++){
-		tempoGeracaoProcessos[i]= rand()%TEMPO_MAX_CHEGADA;
-	}
-	qsort(tempoGeracaoProcessos,MAX_PROCESSOS,sizeof(*tempoGeracaoProcessos),compare);
-}
-
 void criaProcessos() {
-	while(numProcesso<MAX_PROCESSOS && 
-	  tempoGeracaoProcessos[numProcesso] == tempoDecorrido) {
+	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
-		fprintf(f,"Adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
+		fprintf(f,"Criando e adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
 		numProcesso++;
 	}
 }
@@ -134,14 +120,6 @@ int compare(const void * elem1, const void * elem2) {
     if (f > s) return  1;
     if (f < s) return -1;
     return 0;
-}
-
-void printTemposProcessos(){
-	fprintf(f,"Tempos processos:[");
-	for(int i=0;i<MAX_PROCESSOS; i++) {
-		fprintf(f,"%d ",tempoGeracaoProcessos[i]);
-		if(i==MAX_PROCESSOS-1) fprintf(f,"%d]\n", tempoGeracaoProcessos[i]);
-	}
 }
 
 void printProcessosFinalizados(){
