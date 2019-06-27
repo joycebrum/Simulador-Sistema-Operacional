@@ -92,12 +92,15 @@ bool pedirIO(Processo *processo, int tempo, FILE *f) {
 	fprintf(f,"Processo retornará no Quantum = %d\n", tempoChamada.tipoIO.tempo + tempo);
 	switch(tempoChamada.tipoIO.tipoIO) {
 		case DISCO:
+			processo->tempoBloqueado = 0;
 			add(&filaDisco, processo);
 			break;
 		case IMPRESSORA:
+			processo->tempoBloqueado = 0;
 			add(&filaImpressora, processo);
 			break;
 		case FITA_MAGNETICA:
+			processo->tempoBloqueado = 0;
 			add(&filaFita, processo);
 			break;
 		default:
@@ -111,26 +114,46 @@ bool pedirIO(Processo *processo, int tempo, FILE *f) {
 void updateFilaDeIO(IO tipo, FIFO *filaIO, FILE *f) {
 	if(!empty(filaIO)) {
 		int i = filaIO->head;
-		fprintf(f,"Fila de bloqueados IO %s: [", tipo.nomeTipo);
 		while(true) {
 			filaIO->queue[i]->tempoBloqueado++;
-			fprintf(f," %d",  filaIO->queue[i]->PID);			
 			if(i==filaIO->tail) {
-				fprintf(f,"]\n");
 				break;
 			}
 			i=(i+1)%MAX_PROCESSOS;
 		}
 
 		i = filaIO->head;
-		if(filaIO->queue[filaIO->head]->tempoBloqueado == tipo.tempo) {
+		while(!empty(filaIO) && filaIO->queue[filaIO->head]->tempoBloqueado >= tipo.tempo) {
 			Processo *process = pop(filaIO);
+			fprintf(f, "Desbloqueando processo PID: %d do IO %s\n", process->PID, tipo.nomeTipo);
 			unblockProcess(process);
 			if(tipo.vaiPraAlta) add(&altaPrioridade, process);
 			else add(&baixaPrioridade, process);
 		}
 	}
 }
+
+void imprimeFilaIO(IO tipo, FIFO *filaIO, FILE *f) {
+	fprintf(f,"Fila de bloqueados IO %s (Tempo %d): [", tipo.nomeTipo, tipo.tempo);
+	if(!empty(filaIO)) {
+		int i = filaIO->head;
+		while(true) {
+			fprintf(f," {PID: %d, tempo: %d}",  filaIO->queue[i]->PID, filaIO->queue[i]->tempoBloqueado);			
+			if(i==filaIO->tail) {
+				break;
+			}
+			i=(i+1)%MAX_PROCESSOS;
+		}
+	}
+	fprintf(f,"]\n");
+}
+
+void imprimeTodasAsFilas(FILE *f) {
+	imprimeFilaIO(tiposIO[DISCO], &filaDisco, f);
+	imprimeFilaIO(tiposIO[IMPRESSORA], &filaImpressora, f);
+	imprimeFilaIO(tiposIO[FITA_MAGNETICA], &filaFita, f);
+}
+
 /*Atualizar as filas de todos os IOs*/
 void updateBlockedProcesses(FILE *f) {
 	updateFilaDeIO(tiposIO[DISCO], &filaDisco, f);
