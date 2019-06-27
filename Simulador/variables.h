@@ -73,7 +73,6 @@ typedef struct _Processo {
 
 int memoria[MEM_PRINCIPAL]; //em frames
 
-FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
 
 #endif
 

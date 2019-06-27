@@ -81,7 +81,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	for(int i=0; i < newProcesso->numPaginas;i++){
 		newProcesso->tabelaPaginas[i].num_pagina = i;
 		newProcesso->tabelaPaginas[i].num_frame = -1;
-	} 
+	}
 	//initLRU(newProcesso->gerenciadorPaginas);
 
 	return newProcesso;
@@ -126,7 +126,7 @@ bool processoTerminou(Processo *processo) {
 }
 
 // para exibição de resultado
-void printProcesso(Processo *processo) {
+void printProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"Informações do processo criado:\n");
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d \n", processo->PID);

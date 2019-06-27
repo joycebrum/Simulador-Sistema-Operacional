@@ -25,6 +25,7 @@ void criaProcessos();
 int compare();
 void printTemposProcessos();
 void printProcessosFinalizados();
+FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
 /*-Main---------------------------------------------------------------*/
 int main () {
 	inicializacao();
@@ -34,6 +35,7 @@ int main () {
 		criaProcessos();
 		processador();	
 		atualizarTempoEsperaProcessosReady(f);
+		imprimeTodasAsFilas(f);
 		tempoDecorrido++;
 	}
 	printProcessosFinalizados();
@@ -50,7 +52,7 @@ void inicializacao() {
 	processoExecutando = NULL;
 	f = fopen("log.txt", "w");
 	if (f == NULL){
-		fprintf(f,"Error opening file!\n");
+		printf("Error opening file!\n");
 		exit(1);
 	}
 }
@@ -110,7 +112,7 @@ void criaProcessos() {
 	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
-		printProcesso(processo);
+		printProcesso(processo,f);
 		fprintf(f,"Adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
 		numProcesso++;
 	}
@@ -125,11 +127,11 @@ int compare(const void * elem1, const void * elem2) {
 }
 
 void printProcessosFinalizados(){
-	fprintf(f,"Processos finalizados:[");
+	fprintf(f,"\nProcessos finalizados:\n-------------------------------------\n");
 	for(int i=0;i<MAX_PROCESSOS;i++){
-		fprintf(f,"(PID=%d,Turnaround=%d) ", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
+		fprintf(f,"|PID=%d,Turnaround=%d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
 		if(i==MAX_PROCESSOS-1) {
-			fprintf(f,"]\n");
+			fprintf(f,"-------------------------------------\n");
 		}
 	}
 }
