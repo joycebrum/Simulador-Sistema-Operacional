@@ -82,7 +82,8 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 		newProcesso->tabelaPaginas[i].num_pagina = i;
 		newProcesso->tabelaPaginas[i].num_frame = -1;
 	}
-	//initLRU(newProcesso->gerenciadorPaginas);
+	newProcesso->gerenciadorPaginas = (GerenciadorPaginas*)malloc(sizeof(GerenciadorPaginas));
+	initLRU(newProcesso->gerenciadorPaginas);
 
 	return newProcesso;
 }

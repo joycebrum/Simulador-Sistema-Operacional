@@ -8,6 +8,7 @@
 #include "gerenciadorfilas.h"
 
 
+
 /*-Global Variables---------------------------------------------------*/
 int tempoDecorrido;//Variável que representa o tempo 
 int tempoExecutando;//
@@ -129,7 +130,7 @@ int compare(const void * elem1, const void * elem2) {
 void printProcessosFinalizados(){
 	fprintf(f,"\nProcessos finalizados:\n-------------------------------------\n");
 	for(int i=0;i<MAX_PROCESSOS;i++){
-		fprintf(f,"|PID=%d,Turnaround=%d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
+		fprintf(f,"| PID = %d  ----  Turnaround = %d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
 		if(i==MAX_PROCESSOS-1) {
 			fprintf(f,"-------------------------------------\n");
 		}

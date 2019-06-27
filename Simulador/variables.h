@@ -1,7 +1,6 @@
 #ifndef variables
 #define variables
 
-#include <stdio.h>
 
 #define MAX_PROCESSOS 20
 #define TEMPO_RR 4
@@ -19,7 +18,7 @@
 #define WSL 4
 #define MAX_VIRT_PAGE 64 // tamanho da tabela de paginas
 
-
+#include "lru.h"
 /*-Variáveis Globais---------------------------------------------------*/
 
 /*Tupla que indica o tipo de IO e a duração*/
@@ -67,7 +66,7 @@ typedef struct _Processo {
 	int numPaginasAlocadas; 
 	Tabela_Paginas* tabelaPaginas;
 	int* paginasReferenciadas;
-	//LRU *gerenciadorPaginas;
+	GerenciadorPaginas *gerenciadorPaginas;
 } Processo;
 
 
