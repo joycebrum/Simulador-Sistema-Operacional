@@ -58,6 +58,21 @@ TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 	return temposChamada;
 }
 
+void setPaginasReferenciadasAleatoria(Processo *processo) {
+	int quantidade = processo->tempoServico / 3 + 1;
+	
+	processo->paginasReferenciadas.quantidade = quantidade;
+	int *referencias;
+	referencias = (int*) malloc(quantidade*sizeof(int));
+	referencias[0] = 0;
+	for(int i = 1; i < quantidade; i++) {
+		int paginaReferenciada = getValorAleatorio(1, quantidade);
+		referencias[i] = paginaReferenciada;
+	}
+	
+	processo->paginasReferenciadas.vetor = referencias;
+}
+
 /*Cria o PCB de um novo processo*/
 Processo* createNewProcess(int priority, int PPID, int tempo) {
 	Processo *newProcesso = (Processo*) malloc(sizeof(Processo));
@@ -82,6 +97,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 		newProcesso->tabelaPaginas[i].num_pagina = i;
 		newProcesso->tabelaPaginas[i].num_frame = -1;
 	}
+	setPaginasReferenciadasAleatoria(newProcesso);
 	newProcesso->gerenciadorPaginas = (GerenciadorPaginas*)malloc(sizeof(GerenciadorPaginas));
 	initLRU(newProcesso->gerenciadorPaginas);
 
@@ -133,13 +149,14 @@ void printProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"|PID = %d \n", processo->PID);
 	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
 	fprintf(f,"|Quantidade IO = %d \n", processo->quantidadeChamadas);
-	fprintf(f,"|Paginas Referenciadas = [ ] \n");
-	fprintf(f,"-------------------------------------\n");
+	fprintf(f,"|Quantidade Páginas = %d\n", processo->numPaginas);
+	fprintf(f,"|Paginas Referenciadas = [ ");
 	
-	/*int i = 0;
-	for (i = 0; i < quantidade; i++) {
-		fprintf(f,"(%s, %d) ",  processo.chamada[i].tipoIO.nomeTipo, processo.chamada[i].tempoBloqueio);
-	}*/
+	for (int i = 0; i < processo->paginasReferenciadas.quantidade; i++) {
+		fprintf(f,"%d ", processo->paginasReferenciadas.vetor[i]);
+	}
+	fprintf(f, "] \n");
+	fprintf(f,"-------------------------------------\n");
 }
 
 #endif

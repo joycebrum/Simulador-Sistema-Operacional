@@ -48,6 +48,11 @@ typedef struct _Tabela_Paginas{
     int num_frame; // -1 se não tiver carregada
 } Tabela_Paginas;
 
+typedef struct _PaginasReferenciadas {
+	int* vetor;
+	int quantidade;
+} PaginasReferenciadas;
+
 typedef struct _Processo {
 	int PID;
 	int PPID;
@@ -65,7 +70,7 @@ typedef struct _Processo {
 	int numPaginas;
 	int numPaginasAlocadas; 
 	Tabela_Paginas* tabelaPaginas;
-	int* paginasReferenciadas;
+	PaginasReferenciadas paginasReferenciadas;
 	GerenciadorPaginas *gerenciadorPaginas;
 } Processo;
 
