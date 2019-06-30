@@ -2,7 +2,7 @@
 #define variables
 
 
-#define MAX_PROCESSOS /*20*/ 1
+#define MAX_PROCESSOS 20
 #define TEMPO_RR 4
 #define DISCO 0
 #define FITA_MAGNETICA 1
