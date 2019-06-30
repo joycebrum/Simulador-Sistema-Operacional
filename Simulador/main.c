@@ -86,6 +86,7 @@ void executarProcesso() {
 void escalonarProcesso() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = selecionarProximoProcessoAExecutar();
+	verificaSeFazSwapIn(processoExecutando, f);
 	if(processoExecutando) fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
 	
 }
@@ -97,7 +98,9 @@ void processador() {
 	/*Se algum processo foi escalonado*/
 	if(processoExecutando){
 		if(processoTerminou(processoExecutando)) {
-			fprintf(f,"Processo com PID = %d terminou\n", processoExecutando->PID);
+			fprintf(f,"Processo com PID = %d terminou, removendo todas as suas páginas da memória\n", processoExecutando->PID);
+			swapOutProcess(processoExecutando, f);
+			fprintf(f, "\n");
 			processoExecutando->tempoTermino = tempoDecorrido - processoExecutando->tempoEntrada;
 			processosFinalizados[numProcessosFinalizados] = *processoExecutando;
 			numProcessosFinalizados++;

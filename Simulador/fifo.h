@@ -10,12 +10,7 @@
  * numberOfElements: número de processos na fila
  * head: aponta para o primeiro da fila
  * tail: aponta para o último da fila, ou -1 se a fila estiver vazia*/
-typedef struct _FIFO {
-	Processo *queue[MAX_PROCESSOS];
-    int numberOfElements;
-    int head;
-    int tail;
-}FIFO;
+
 
 /*Inicializa a fila*/
 void init(FIFO *f) {

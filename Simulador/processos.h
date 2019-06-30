@@ -92,10 +92,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	newProcesso->chamada = getTempoBloqueioAleatorio(quantidadeIO, newProcesso->tempoServico);
 	
 	newProcesso->numPaginas = gera_num_paginas();
-	newProcesso->tabelaPaginas = (Tabela_Paginas *)malloc(MAX_VIRT_PAGE*sizeof(Tabela_Paginas));
-	newProcesso->numPaginasAlocadas = 0;
 	for(int i=0; i < MAX_VIRT_PAGE; i++){
-		newProcesso->tabelaPaginas[i].num_pagina = i;
 		newProcesso->tabelaPaginas[i].num_frame = -1;
 	}
 	setPaginasReferenciadasAleatoria(newProcesso);
@@ -131,8 +128,34 @@ void toReadyProcess(Processo *processo) {
 	processo->status = ready;
 } 
 void unblockProcess(Processo *processo) {
-	toReadyProcess(processo);
+	if(processo->status == blocked) toReadyProcess(processo);
+	else if(processo->status == blocked_suspend) processo->status = ready_suspend;
+	else {
+		puts("Pedido para desbloquear processo que nao estava nem blocked nem blocked_suspend");
+		exit(0);
+	}
 	processo->tempoBloqueado = 0;
+}
+void swapOutProcess(Processo *processo, FILE *f) {
+	if(processo->status == blocked) {
+		processo->status = blocked_suspend;
+	} else if (processo->status == ready) {
+		processo->status = ready_suspend;
+	} else if(processo->status != terminado) {
+		puts("Tentativa de dar swap out em um processo que nao estava bloqueado, terminado ou pronto");
+		exit(0);
+	}
+	
+	fprintf(f, "Frames");
+	for(int i = 0; i < processo->numPaginas; i++) {
+		if(processo->tabelaPaginas[i].num_frame != -1) {
+			int frame = processo->tabelaPaginas[i].num_frame;
+			memoria[frame] = -1;
+			processo->tabelaPaginas[i].num_frame = -1;
+			fprintf(f, " %d", frame);
+		}
+	}
+	fprintf(f, " liberados");
 }
 
 bool processoTerminou(Processo *processo) {

@@ -32,8 +32,10 @@ typedef struct _IO {
 IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 10, 1}, {IMPRESSORA, "Impressora", 15, 1}};
 
 //não pode ser "new" ou "exit" pq sao simbolos da linguagem
-enum statusTypes {novo, ready, running, blocked, suspenso, terminado};
+enum statusTypes {novo, ready, ready_suspend, running, blocked, blocked_suspend, terminado};
 
+
+int memoria[MEM_PRINCIPAL]; //em frames
 
 // ---------------------------- variaveis do LRU -----------------
 typedef struct _No {
@@ -58,7 +60,6 @@ typedef struct _TempoChamadaIO {
 
 /*Struct da Tabela de Páginas*/
 typedef struct _Tabela_Paginas{
-    int num_pagina;
     int num_frame; // -1 se não tiver carregada
 } Tabela_Paginas;
 
@@ -83,14 +84,28 @@ typedef struct _Processo {
 	TempoChamadaIO *chamada; //Vetor com os tempos de chamada de cada IO
 	// parte referente a gerenciamento de memoria
 	int numPaginas;
-	int numPaginasAlocadas; 
-	Tabela_Paginas* tabelaPaginas;
+	Tabela_Paginas tabelaPaginas[MAX_VIRT_PAGE];
 	PaginasReferenciadas paginasReferenciadas;
 	GerenciadorPaginas *gerenciadorPaginas;
 } Processo;
 
 
-int memoria[MEM_PRINCIPAL]; //em frames
+// ---------------------------- variaveis do FIFO ----------------
+typedef struct _FIFO {
+	Processo *queue[MAX_PROCESSOS];
+    int numberOfElements;
+    int head;
+    int tail;
+}FIFO;
+
+
+// ----------------------------- Variaveis das filas
+
+FIFO altaPrioridade;
+FIFO baixaPrioridade;
+FIFO filaDisco;
+FIFO filaFita;
+FIFO filaImpressora;
 
 
 #endif

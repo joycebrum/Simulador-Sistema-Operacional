@@ -4,16 +4,9 @@
 #define TEMPO_MAXIMO_BAIXA_PRIORIDADE TEMPO_MAXIMO
 #include <stddef.h>
 #include "fifo.h"
-#include "processos.h"
 #include "variables.h"
+#include "processos.h"
 
-
-
-FIFO altaPrioridade;
-FIFO baixaPrioridade;
-FIFO filaDisco;
-FIFO filaFita;
-FIFO filaImpressora;
 
 void initFilas() {
 	init(&altaPrioridade);
@@ -65,7 +58,6 @@ Processo* selecionarProximoProcessoAExecutar() {
 	else if(!empty(&baixaPrioridade)) processo = pop(&baixaPrioridade);
 	else return NULL;
 	
-	runProcess(processo);
 	return processo;
 }
 
@@ -166,4 +158,7 @@ void adicionarProcessoNovo(Processo *processo) {
 	add(&altaPrioridade, processo);
 	toReadyProcess(processo);
 }
+
+
+
 #endif
