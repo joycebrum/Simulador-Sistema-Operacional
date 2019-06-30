@@ -145,7 +145,6 @@ bool processoTerminou(Processo *processo) {
 
 // para exibição de resultado
 void printNovoProcesso(Processo *processo, FILE *f) {
-	fprintf(f,"Informações do processo criado:\n");
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d \n", processo->PID);
 	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
@@ -164,7 +163,7 @@ void printNovoProcesso(Processo *processo, FILE *f) {
 		fprintf(f,"%d ", processo->paginasReferenciadas.vetor[i]);
 	}
 	fprintf(f, "] \n");
-	fprintf(f,"-------------------------------------\n");
+	fprintf(f,"-------------------------------------\n\n");
 }
 
 void printProcessoExecutando(Processo *processoExecutando, FILE *f) {

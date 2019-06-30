@@ -28,6 +28,7 @@ int compare();
 void printTemposProcessos();
 void printProcessosFinalizados();
 FILE *f;//Arquivo de saída onde serão mostrados estágios do escalonamento
+FILE *processLog;
 /*-Main---------------------------------------------------------------*/
 int main () {
 	inicializacao();
@@ -54,6 +55,7 @@ void inicializacao() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = NULL;
 	f = fopen("log.txt", "w");
+	processLog = fopen("processoLog.txt", "w");
 	if (f == NULL){
 		printf("Error opening file!\n");
 		exit(1);
@@ -113,8 +115,8 @@ void criaProcessos() {
 	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
-		printNovoProcesso(processo,f);
-		fprintf(f,"Adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
+		fprintf(f,"Processo PID = %d criado e adicionado à fila de alta prioridade \n", processo->PID);
+		printNovoProcesso(processo, processLog);
 		numProcesso++;
 	}
 }
