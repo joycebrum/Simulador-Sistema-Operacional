@@ -94,7 +94,7 @@ Processo* createNewProcess(int priority, int PPID, int tempo) {
 	newProcesso->numPaginas = gera_num_paginas();
 	newProcesso->tabelaPaginas = (Tabela_Paginas *)malloc(MAX_VIRT_PAGE*sizeof(Tabela_Paginas));
 	newProcesso->numPaginasAlocadas = 0;
-	for(int i=0; i < newProcesso->numPaginas;i++){
+	for(int i=0; i < MAX_VIRT_PAGE; i++){
 		newProcesso->tabelaPaginas[i].num_pagina = i;
 		newProcesso->tabelaPaginas[i].num_frame = -1;
 	}
@@ -150,7 +150,14 @@ void printNovoProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"|PID = %d \n", processo->PID);
 	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
 	fprintf(f,"|Quantidade IO = %d \n", processo->quantidadeChamadas);
-	fprintf(f,"|Quantidade Páginas = %d\n", processo->numPaginas);
+	fprintf(f,"|IO = [");
+	for(int i = 0; i < processo->quantidadeChamadas; i++) {
+		if(i > 0 && i % 3 == 0) {			
+			fprintf(f,"\n|      ");
+		}
+		fprintf(f," %s-%d ", processo->chamada[i].tipoIO.nomeTipo, processo->chamada[i].tempoBloqueio);
+	}
+	fprintf(f,"]\n|Quantidade Páginas = %d\n", processo->numPaginas);
 	fprintf(f,"|Paginas Referenciadas = [ ");
 	
 	for (int i = 0; i < processo->paginasReferenciadas.quantidade; i++) {
@@ -163,10 +170,24 @@ void printNovoProcesso(Processo *processo, FILE *f) {
 void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
 	fprintf(f,"Informações do PCB do processo em execução:\n");
 	fprintf(f,"-------------------------------------\n");
-	fprintf(f,"|PID = %d                           |\n", processoExecutando->PID);
-	fprintf(f,"|Tempo de Serviço = %d              |\n", processoExecutando->tempoServico);
-	fprintf(f,"|Tempo executado = %d                |\n", processoExecutando->tempoExecutado);
-	fprintf(f,"|Páginas na Memória = [");
+	fprintf(f,"|PID = %d                           \n", processoExecutando->PID);
+	fprintf(f,"|Tempo de Serviço = %d              \n", processoExecutando->tempoServico);
+	fprintf(f,"|Tempo executado = %d                \n", processoExecutando->tempoExecutado);
+	int achou = 0;
+	for(int i = 0; i < MAX_VIRT_PAGE; i++) {
+		if(processoExecutando->tabelaPaginas[i].num_frame != -1) {
+			if(achou == 0) {
+				fprintf(f,"|Tabela de páginas = \n|   página   |   frame   \n");
+			}
+			achou = 1;
+			fprintf(f,"|     %d     |     %d \n", i, processoExecutando->tabelaPaginas[i].num_frame);
+		}
+	}
+	if(achou == 0) {
+		fprintf(f,"|nenhuma página na memória \n");
+	}
+	
+	fprintf(f,"|LRU = [");
 	No *atual = processoExecutando->gerenciadorPaginas->head;
 	while(atual != NULL) {
 		fprintf(f, " %d ", atual->valor);

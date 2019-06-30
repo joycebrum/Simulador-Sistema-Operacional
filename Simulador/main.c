@@ -66,10 +66,12 @@ void inicializacao() {
  *2) Se o processo atualmente escalonado fizer um IO no tempo atual*/
 void executarProcesso() {
 	/*Se há interrupção de IO do processo escalonado, escalona um novo*/
-	if(pedirIO(processoExecutando, tempoDecorrido, f)) escalonarProcesso();
+	processoExecutando->tempoExecutado++;
+	if(pedirIO(processoExecutando, tempoDecorrido, f)) {
+		escalonarProcesso();
+	}
 	/*Se algum processo for escalonado*/
 	if(processoExecutando) {
-		processoExecutando->tempoExecutado++;
 		tempoExecutadoProcessador++;
 		printProcessoExecutando(processoExecutando, f);
 	}

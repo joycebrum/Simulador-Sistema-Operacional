@@ -81,7 +81,7 @@ bool pedirIO(Processo *processo, int tempo, FILE *f) {
 	bool achouIO = false;
 	TempoChamadaIO tempoChamada;
 	for(i = 0; i < processo->quantidadeChamadas; i++) {
-		if(processo->chamada[i].tempoBloqueio == tempo)	{
+		if(processo->chamada[i].tempoBloqueio == processo->tempoExecutado)	{
 			tempoChamada = processo->chamada[i];
 			achouIO = true;			
 			break;
