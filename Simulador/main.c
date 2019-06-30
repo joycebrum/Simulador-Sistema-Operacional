@@ -42,6 +42,8 @@ int main () {
 		tempoDecorrido++;
 	}
 	printProcessosFinalizados();
+	fclose(f);
+	fclose(processLog);
 }
 
 /*-Functions----------------------------------------------------------*/

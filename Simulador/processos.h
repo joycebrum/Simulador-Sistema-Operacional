@@ -136,7 +136,7 @@ void unblockProcess(Processo *processo) {
 }
 
 bool processoTerminou(Processo *processo) {
-	if(processo->tempoExecutado == processo->tempoServico) {
+	if(processo->tempoExecutado >= processo->tempoServico) {
 		endProcess(processo);
 		return true;
 	}
