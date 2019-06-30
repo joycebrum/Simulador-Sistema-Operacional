@@ -61,7 +61,7 @@ TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 
 void setPaginasReferenciadasAleatoria(Processo *processo) {
 	int quantidade = processo->tempoServico / 3 + 1;
-	
+	processo->paginasReferenciadas.ultimaPaginaReferenciada = -1;
 	processo->paginasReferenciadas.quantidade = quantidade;
 	int *referencias;
 	referencias = (int*) malloc(quantidade*sizeof(int));
@@ -144,7 +144,8 @@ bool processoTerminou(Processo *processo) {
 }
 
 // para exibição de resultado
-void printNovoProcesso(Processo *processo, FILE *f) {
+void printNovoProcesso(Processo *processo, FILE *f, int tempoDecorrido) {
+	fprintf(f, "\nCriado no instante de tempo %d\n", tempoDecorrido);
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d \n", processo->PID);
 	fprintf(f,"|Tempo de Serviço = %d \n", processo->tempoServico);
@@ -166,8 +167,8 @@ void printNovoProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"-------------------------------------\n\n");
 }
 
-void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
-	fprintf(f,"Informações do PCB do processo em execução:\n");
+void printProcessoExecutando(Processo *processoExecutando, FILE *f, char* estado) {
+	fprintf(f,"Informações do PCB do processo %s:\n", estado);
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d                           \n", processoExecutando->PID);
 	fprintf(f,"|Tempo de Serviço = %d              \n", processoExecutando->tempoServico);
@@ -179,7 +180,7 @@ void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
 				fprintf(f,"|Tabela de páginas = \n|   página   |   frame   \n");
 			}
 			achou = 1;
-			fprintf(f,"|     %d     |     %d \n", i, processoExecutando->tabelaPaginas[i].num_frame);
+			fprintf(f,"|     %d           %d \n", i, processoExecutando->tabelaPaginas[i].num_frame);
 		}
 	}
 	if(achou == 0) {

@@ -58,4 +58,13 @@ void verificaECarregaPagina(Processo* processo, int pagina){
 	}
 }
 
+void gerenciaMemoria(Processo *processo, FILE *f) {
+	if(processo->tempoExecutado % 3 == 0) {
+		
+		processo->paginasReferenciadas.ultimaPaginaReferenciada++;
+		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];
+		verificaECarregaPagina(processo, paginaReferenciada);
+	}
+}
+
 #endif

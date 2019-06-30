@@ -72,12 +72,13 @@ void executarProcesso() {
 	/*Se há interrupção de IO do processo escalonado, escalona um novo*/
 	processoExecutando->tempoExecutado++;
 	if(pedirIO(processoExecutando, tempoDecorrido, f)) {
-		escalonarProcesso();
+		printProcessoExecutando(processoExecutando, f, "bloqueado");
+		processoExecutando = NULL;
 	}
 	/*Se algum processo for escalonado*/
-	if(processoExecutando) {
+	else if(processoExecutando) {
 		tempoExecutadoProcessador++;
-		printProcessoExecutando(processoExecutando, f);
+		printProcessoExecutando(processoExecutando, f, "em execução");
 	}
 }
 
@@ -108,7 +109,9 @@ void processador() {
 			escalonarProcesso();
 		}
 	}
-	if(processoExecutando) executarProcesso();
+	if(processoExecutando) {
+		executarProcesso();
+	}
 	else fprintf(f,"Não há processo disponível para escalonamento\n");
 	
 }
@@ -118,7 +121,7 @@ void criaProcessos() {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
 		fprintf(f,"Processo PID = %d criado e adicionado à fila de alta prioridade \n", processo->PID);
-		printNovoProcesso(processo, processLog);
+		printNovoProcesso(processo, processLog, tempoDecorrido);
 		numProcesso++;
 	}
 }

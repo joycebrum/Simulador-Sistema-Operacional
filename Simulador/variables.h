@@ -64,6 +64,7 @@ typedef struct _Tabela_Paginas{
 
 typedef struct _PaginasReferenciadas {
 	int* vetor;
+	int ultimaPaginaReferenciada;
 	int quantidade;
 } PaginasReferenciadas;
 
