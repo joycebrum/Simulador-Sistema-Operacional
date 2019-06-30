@@ -110,6 +110,7 @@ void processador() {
 		}
 	}
 	if(processoExecutando) {
+		gerenciaMemoria(processoExecutando, f);
 		executarProcesso();
 	}
 	else fprintf(f,"Não há processo disponível para escalonamento\n");
