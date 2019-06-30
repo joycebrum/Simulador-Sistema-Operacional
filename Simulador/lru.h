@@ -1,6 +1,10 @@
 #ifndef lru
 #define lru
 
+
+#include <stddef.h>
+#include <stdlib.h>
+
 #include "variables.h"
 
 /* 
@@ -8,70 +12,87 @@
  * numberOfElements: número de processos na fila
  * head: aponta para o primeiro da fila
  * tail: aponta para o último da fila, ou -1 se a fila estiver vazia*/
-typedef struct _LRU {
-	int queue[WSL];
-    int numberOfElements;
-    int head;
-    int tail;
-}GerenciadorPaginas;
 
 /*Inicializa a fila*/
 void initLRU(GerenciadorPaginas *f) {
-    f->head = 0;
-    f->tail = -1;
     f->numberOfElements = 0;
+    f->head = NULL;
+    f->tail = NULL;
 }
 /*Verifica se a fila está vazia*/
 int isEmptyLRU(GerenciadorPaginas *f) {
-    return f->numberOfElements==0;
+    return f->numberOfElements == 0;
 }
 /*Verifica se a fila está cheia*/
 int isFullLRU(GerenciadorPaginas *f) {
-    return f->numberOfElements==WSL;
+    return f->numberOfElements == WSL;
 }
 
 /*Se a fila não estiver cheia, insere um elemento no fim da fila*/
 void addLRU(GerenciadorPaginas *f, int element) {
 	if(!isFullLRU(f)){
-		f->tail=(f->tail+1)%WSL;
-		f->queue[f->tail] = element;
+		No *novo = (No *) malloc(sizeof(No));
+		novo->proximo = NULL;
+		novo->valor = element;
+		novo->anterior = NULL;
+		if(isEmptyLRU(f)) {
+			f->head = novo;
+			f->tail = f->head;
+		}
+		else {
+			novo->anterior = f->tail;
+			f->tail->proximo = novo;
+			f->tail = novo;
+		}
 		f->numberOfElements++;
 	}
 }
 /*Se a fila não estiver vazia, remove o primeiro elemento da fila*/
 int popLRU(GerenciadorPaginas *f) {
 	if(!isEmptyLRU(f)){
-		int elemento = f->queue[f->head];
-		f->head = (f->head+1)%WSL;
+		No *elemento = f->head;
+		f->head = f->head->proximo;
 		f->numberOfElements--;
-		return elemento;
+		return elemento->valor;
 	}
 	return -1;
 }
 
-void updatePagina(int position) {
-	
+void removeLRU(GerenciadorPaginas *f, No* no) {
+	No *anterior = no->anterior;
+	No *proximo = no->proximo;
+	if(anterior != NULL) {
+		anterior->proximo = proximo;
+	}
+	if(proximo != NULL) {
+		proximo->anterior = anterior;
+	}
+	if(f->head == no) {
+		f->head = proximo;
+	}
+	if(f->tail == no) {
+		f->tail = anterior;
+	}
 }
 
-//retorna o numero da pagina que será substituida
-// -1 caso nenhuma seja substituida
-int referenciarPagina(GerenciadorPaginas *f, int pagina) {
-	if(isFullLRU(f)) {
-		int i = f->head;
-		while(true) {
-			if(f->queue[i] == pagina) {
-				updatePagina(i);
-				return -1;
-			}			
-			if(i==f->tail) {
-				int removida = popLRU(f);
-				addLRU(f, pagina);
-				return removida;
-			}
-			i=(i+1)%WSL;
+void updatePageLRU(GerenciadorPaginas *f, int pagina) {
+	No *atual = f->head;
+	while(atual != NULL) {
+		if(atual->valor == pagina) {
+			removeLRU(f, atual);
+			break;
 		}
-	}
-	else {
+		atual = atual->proximo;
+	}	
+	addLRU(f, pagina);
+}
+
+int loadPageLRU(GerenciadorPaginas *f, int pagina) {
+	if(isFullLRU(f)) {
+		int pageRemoved = popLRU(f);
+		addLRU(f, pagina);
+		return pageRemoved;
+	} else {
 		addLRU(f, pagina);
 		return -1;
 	}

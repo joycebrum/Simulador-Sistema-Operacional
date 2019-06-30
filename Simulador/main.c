@@ -6,6 +6,7 @@
 #include "processos.h"
 #include "fifo.h"
 #include "gerenciadorfilas.h"
+#include "gerenciadormemoria.h"
 
 
 
@@ -46,6 +47,7 @@ int main () {
 void inicializacao() {
 	initSrand();
 	initFilas();
+	initMemoria();
 	tempoDecorrido = 0;
 	tempoExecutando = 0;
 	numProcesso = 0;
@@ -58,6 +60,7 @@ void inicializacao() {
 	}
 }
 
+
 /*Processador escalona um novo processo em 2 casos
  *1) Se não houver processo escalonado atualmente
  *2) Se o processo atualmente escalonado fizer um IO no tempo atual*/
@@ -68,12 +71,7 @@ void executarProcesso() {
 	if(processoExecutando) {
 		processoExecutando->tempoExecutado++;
 		tempoExecutadoProcessador++;
-		fprintf(f,"Informações do PCB do processo em execução:\n");
-		fprintf(f,"-------------------------------------\n");
-		fprintf(f,"|PID = %d                           |\n", processoExecutando->PID);
-		fprintf(f,"|Tempo de Serviço = %d              |\n", processoExecutando->tempoServico);
-		fprintf(f,"|Tempo executado = %d                |\n", processoExecutando->tempoExecutado);
-		fprintf(f,"-------------------------------------\n");
+		printProcessoExecutando(processoExecutando, f);
 	}
 }
 
@@ -113,7 +111,7 @@ void criaProcessos() {
 	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
-		printProcesso(processo,f);
+		printNovoProcesso(processo,f);
 		fprintf(f,"Adicionando processo com PID = %d à fila de alta prioridade\n", processo->PID);
 		numProcesso++;
 	}

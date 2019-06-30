@@ -2,7 +2,7 @@
 #define variables
 
 
-#define MAX_PROCESSOS 20
+#define MAX_PROCESSOS /*20*/ 1
 #define TEMPO_RR 4
 #define DISCO 0
 #define FITA_MAGNETICA 1
@@ -18,7 +18,6 @@
 #define WSL 4
 #define MAX_VIRT_PAGE 64 // tamanho da tabela de paginas
 
-#include "lru.h"
 /*-Variáveis Globais---------------------------------------------------*/
 
 /*Tupla que indica o tipo de IO e a duração*/
@@ -35,6 +34,21 @@ IO tiposIO[3] = {{DISCO, "Disco", 6, 0}, {FITA_MAGNETICA, "Fita Magnética", 10,
 //não pode ser "new" ou "exit" pq sao simbolos da linguagem
 enum statusTypes {novo, ready, running, blocked, suspenso, terminado};
 
+
+// ---------------------------- variaveis do LRU -----------------
+typedef struct _No {
+	struct _No *proximo;
+	struct _No *anterior;
+	int valor;
+}No;
+
+typedef struct _GerenciadorPaginas {
+	No *head;
+	No *tail;
+    int numberOfElements;
+}GerenciadorPaginas;
+
+// ---------------------------- variaveis do Processo -----------------
 
 /*Tuplas da forma (IO, tempo), onde tempo*/
 typedef struct _TempoChamadaIO {

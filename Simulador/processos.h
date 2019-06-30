@@ -5,6 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "variables.h"
+#include "lru.h"
 
 int PID = 10;
 
@@ -143,7 +144,7 @@ bool processoTerminou(Processo *processo) {
 }
 
 // para exibição de resultado
-void printProcesso(Processo *processo, FILE *f) {
+void printNovoProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"Informações do processo criado:\n");
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d \n", processo->PID);
@@ -159,4 +160,18 @@ void printProcesso(Processo *processo, FILE *f) {
 	fprintf(f,"-------------------------------------\n");
 }
 
+void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
+	fprintf(f,"Informações do PCB do processo em execução:\n");
+	fprintf(f,"-------------------------------------\n");
+	fprintf(f,"|PID = %d                           |\n", processoExecutando->PID);
+	fprintf(f,"|Tempo de Serviço = %d              |\n", processoExecutando->tempoServico);
+	fprintf(f,"|Tempo executado = %d                |\n", processoExecutando->tempoExecutado);
+	fprintf(f,"|Páginas na Memória = [");
+	No *atual = processoExecutando->gerenciadorPaginas->head;
+	while(atual != NULL) {
+		fprintf(f, " %d ", atual->valor);
+		atual = atual->proximo;
+	}
+	fprintf(f,"]\n-------------------------------------\n");
+}
 #endif
