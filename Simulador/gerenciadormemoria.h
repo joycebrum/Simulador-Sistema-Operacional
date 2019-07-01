@@ -168,6 +168,9 @@ void verificaECarregaPagina(Processo* processo, int pagina, FILE *f){
 	}
 }
 void verificaSeFazSwapIn(Processo *processo, FILE *f) {
+	if(processo == NULL){
+		return;
+	}
 	if(processo->status == ready_suspend || processo->status == blocked_suspend) {
 		swapIn(processo, f);
 	}
