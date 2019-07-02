@@ -2,11 +2,13 @@
 #define variables
 
 
-#define MAX_PROCESSOS 60
-#define TEMPO_RR 4
+// tipos de IO
 #define DISCO 0
 #define FITA_MAGNETICA 1
 #define IMPRESSORA 2
+
+#define MAX_PROCESSOS 60
+#define TEMPO_RR 4
 #define TEMPO_MAXIMO 20
 #define TEMPO_MINIMO 1
 #define TEMPO_MAX_CHEGADA 60
@@ -106,7 +108,6 @@ FIFO baixaPrioridade;
 FIFO filaDisco;
 FIFO filaFita;
 FIFO filaImpressora;
-FIFO filaPageFault;
 
 
 #endif

@@ -14,7 +14,6 @@ void initFilas() {
 	init(&filaDisco);
 	init(&filaFita);
 	init(&filaImpressora);
-	init(&filaPageFault);
 }
 
 void atualizarTempoEsperaProcessosReady(FILE *f) {
