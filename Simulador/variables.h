@@ -106,6 +106,7 @@ FIFO baixaPrioridade;
 FIFO filaDisco;
 FIFO filaFita;
 FIFO filaImpressora;
+FIFO filaPageFault;
 
 
 #endif
