@@ -71,7 +71,7 @@ Processo* selecionaProcessoParaRemoverDaMemoria() {
 	pImpressora = getMostRecentlyBlocked(filaImpressora);
 	pDisc = getMostRecentlyBlocked(filaDisco);
 	pFita = getMostRecentlyBlocked(filaFita);
-	
+
 	if(pImpressora != NULL) {
 		Processo *returned = pImpressora;
 		int worstTime = tiposIO[IMPRESSORA].tempo - pImpressora->tempoBloqueado;
@@ -102,7 +102,6 @@ Processo* selecionaProcessoParaRemoverDaMemoria() {
 	else if(pFita != NULL) {
 		return pFita;
 	}
-	
 	if(!empty(&baixaPrioridade)) {
 		return getLastReadyProcess(baixaPrioridade);
 	} else if(!empty(&altaPrioridade)) {
@@ -179,9 +178,11 @@ void verificaSeFazSwapIn(Processo *processo, FILE *f) {
 //retorna 1 em caso de page fault
 int gerenciaMemoria(Processo *processo, FILE *f) {
 	int parteInteira = processo->tempoExecutado / 3;
-	if(parteInteira > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
+	int proximaPagina = processo->paginasReferenciadas.ultimaPaginaReferenciada + 1;
+	if (	proximaPagina < processo->paginasReferenciadas.quantidade && 
+			parteInteira > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
 		processo->paginasReferenciadas.ultimaPaginaReferenciada++;
-		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];	
+		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];
 		fprintf(f, "Referencia à página %d - ", paginaReferenciada);
 		return verificaECarregaPagina(processo, paginaReferenciada, f);
 	}
