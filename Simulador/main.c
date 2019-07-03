@@ -33,7 +33,7 @@ FILE *processLog;
 int main () {
 	inicializacao();
 	while(numProcessosFinalizados<MAX_PROCESSOS){
-		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
+		fprintf(f,"\n\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
 		criaProcessos();
 		processador();	
@@ -116,14 +116,14 @@ void processador() {
 		}
 		
 		if(processoExecutando) {
-			fprintf(f, "---Gerenciador de Memoria---\n");
+			fprintf(f, "\n-------------Gerenciador de Memoria-------------\n");
 			while(processoExecutando && gerenciaMemoria(processoExecutando, f) == 1) {
 				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
 				pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
 				printProcessoExecutando(processoExecutando, f);
 				escalonarProcesso();
 			}
-			fprintf(f, "---Fim do Gerenciador de Memoria---\n");
+			fprintf(f, "-------------Fim do Gerenciador de Memoria-------------\n\n");
 		}
 		
 	}

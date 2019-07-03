@@ -178,11 +178,15 @@ void verificaSeFazSwapIn(Processo *processo, FILE *f) {
 
 //retorna 1 em caso de page fault
 int gerenciaMemoria(Processo *processo, FILE *f) {
-	if(processo->tempoExecutado / 3 > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
+	int parteInteira = processo->tempoExecutado / 3;
+	if(parteInteira > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
 		processo->paginasReferenciadas.ultimaPaginaReferenciada++;
 		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];	
 		fprintf(f, "Referencia à página %d - ", paginaReferenciada);
 		return verificaECarregaPagina(processo, paginaReferenciada, f);
+	}
+	else {
+		fprintf(f, "Processo %d não referenciou nenhuma página\n", processo->PID);
 	}
 	return 0;
 }

@@ -60,7 +60,13 @@ TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 }
 
 void setPaginasReferenciadasAleatoria(Processo *processo) {
-	int quantidade = processo->tempoServico / 3 + 1;
+	int quantidade;
+	if(processo->tempoServico % 3 == 0) {
+		quantidade = processo->tempoServico / 3;
+	}
+	else {
+		quantidade = processo->tempoServico / 3 + 1;
+	}
 	processo->paginasReferenciadas.ultimaPaginaReferenciada = -1;
 	processo->paginasReferenciadas.quantidade = quantidade;
 	int *referencias;
