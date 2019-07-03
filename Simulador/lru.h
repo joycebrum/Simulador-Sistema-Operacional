@@ -73,6 +73,7 @@ void removeLRU(GerenciadorPaginas *f, No* no) {
 	if(f->tail == no) {
 		f->tail = anterior;
 	}
+	f->numberOfElements--;
 }
 
 void updatePageLRU(GerenciadorPaginas *f, int pagina) {
@@ -85,6 +86,16 @@ void updatePageLRU(GerenciadorPaginas *f, int pagina) {
 		atual = atual->proximo;
 	}	
 	addLRU(f, pagina);
+}
+
+void imprimeLRU(GerenciadorPaginas *f, FILE *file) {
+	fprintf(file, "|LRU = [");
+	No *atual = f->head;
+	while(atual != NULL) {
+		fprintf(file, " %d ", atual->valor);
+		atual = atual->proximo;
+	}
+	fprintf(file, "]\n");	
 }
 
 int loadPageLRU(GerenciadorPaginas *f, int pagina) {
