@@ -183,11 +183,11 @@ int gerenciaMemoria(Processo *processo, FILE *f) {
 			parteInteira > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
 		processo->paginasReferenciadas.ultimaPaginaReferenciada++;
 		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];
-		fprintf(f, "Referencia à página %d - ", paginaReferenciada);
+		fprintf(f, "Processo PID %d referencia a página %d - ", processo->PID, paginaReferenciada);
 		return verificaECarregaPagina(processo, paginaReferenciada, f);
 	}
 	else {
-		fprintf(f, "Processo %d não referenciou nenhuma página\n", processo->PID);
+		fprintf(f, "Processo PID %d não referenciou nenhuma página\n", processo->PID);
 	}
 	return 0;
 }

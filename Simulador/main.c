@@ -118,7 +118,7 @@ void processador() {
 		if(processoExecutando) {
 			fprintf(f, "\n******** Gerenciador de Memoria ******** \n");
 			while(processoExecutando && gerenciaMemoria(processoExecutando, f) == 1) {
-				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
+				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n\n",processoExecutando->PID);
 				pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
 				//printProcessoExecutando(processoExecutando, f);
 				escalonarProcesso();
@@ -135,7 +135,7 @@ void processador() {
 }
 
 void criaProcessos() {
-	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
+	if(tempoDecorrido % 3 == 0 && numProcesso <= MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
 		fprintf(f,"Processo PID = %d criado e adicionado à fila de alta prioridade \n", processo->PID);

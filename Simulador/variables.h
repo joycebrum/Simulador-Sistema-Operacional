@@ -7,7 +7,7 @@
 #define FITA_MAGNETICA 1
 #define IMPRESSORA 2
 
-#define MAX_PROCESSOS 60
+#define MAX_PROCESSOS 50
 #define TEMPO_RR 4
 #define TEMPO_MAXIMO 20
 #define TEMPO_MINIMO 1
