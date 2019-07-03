@@ -67,8 +67,14 @@ void interromperProcesso(Processo *processo) {
 	add(&baixaPrioridade, processo);
 }
 
+void pedirIO(Processo *processo, IO tipo, FIFO *fila) {
+	processo->tempoBloqueado = 0;
+	add(fila, processo);
+	blockProcess(processo);
+}
+
 /*Interrupção de IO*/
-bool pedirIO(Processo *processo, int tempo, FILE *f) {
+bool procuraEPedeIO(Processo *processo, int tempo, FILE *f) {
 	int i;
 	bool achouIO = false;
 	TempoChamadaIO tempoChamada;
@@ -84,22 +90,18 @@ bool pedirIO(Processo *processo, int tempo, FILE *f) {
 	fprintf(f,"Processo retornará no Quantum = %d\n", tempoChamada.tipoIO.tempo + tempo);
 	switch(tempoChamada.tipoIO.tipoIO) {
 		case DISCO:
-			processo->tempoBloqueado = 0;
-			add(&filaDisco, processo);
+			pedirIO(processo, tiposIO[DISCO], &filaDisco);
 			break;
 		case IMPRESSORA:
-			processo->tempoBloqueado = 0;
-			add(&filaImpressora, processo);
+			pedirIO(processo, tiposIO[IMPRESSORA], &filaImpressora);
 			break;
 		case FITA_MAGNETICA:
-			processo->tempoBloqueado = 0;
-			add(&filaFita, processo);
+			pedirIO(processo, tiposIO[FITA_MAGNETICA], &filaFita);
 			break;
 		default:
 			fprintf(f,"ERROR: Tipo I/O %d inválido\n", tempoChamada.tipoIO.tipoIO);
 			break;
 	}
-	blockProcess(processo);
 	return true;
 }
 /*Soma 1 ao tempo de bloqueio dos processos em uma fila de IO*/

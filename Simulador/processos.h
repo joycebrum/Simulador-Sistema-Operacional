@@ -190,8 +190,13 @@ void printNovoProcesso(Processo *processo, FILE *f, int tempoDecorrido) {
 	fprintf(f,"-------------------------------------\n\n");
 }
 
-void printProcessoExecutando(Processo *processoExecutando, FILE *f, char* estado) {
-	fprintf(f,"Informações do PCB do processo %s:\n", estado);
+void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
+	if(processoExecutando->status == running) {
+		fprintf(f,"Informações do PCB do processo executando:\n");
+	}
+	else {
+		fprintf(f,"Informações do PCB do processo bloqueado:\n");
+	}
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d                           \n", processoExecutando->PID);
 	fprintf(f,"|Tempo de Serviço = %d              \n", processoExecutando->tempoServico);

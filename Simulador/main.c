@@ -71,14 +71,15 @@ void inicializacao() {
 void executarProcesso() {
 	/*Se há interrupção de IO do processo escalonado, escalona um novo*/
 	processoExecutando->tempoExecutado++;
-	if(pedirIO(processoExecutando, tempoDecorrido, f)) {
-		printProcessoExecutando(processoExecutando, f, "bloqueado");
+	if(procuraEPedeIO(processoExecutando, tempoDecorrido, f)) {
+		printProcessoExecutando(processoExecutando, f);
 		processoExecutando = NULL;
 	}
 	/*Se algum processo for escalonado*/
 	else if(processoExecutando) {
+		fprintf(f, "Processo de PID: %d consome o processador\n", processoExecutando->PID);
 		tempoExecutadoProcessador++;
-		printProcessoExecutando(processoExecutando, f, "em execução");
+		printProcessoExecutando(processoExecutando, f);
 	}
 }
 
@@ -86,8 +87,10 @@ void executarProcesso() {
 void escalonarProcesso() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = selecionarProximoProcessoAExecutar();
-	verificaSeFazSwapIn(processoExecutando, f);
-	if(processoExecutando) fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
+	if(processoExecutando) {
+		verificaSeFazSwapIn(processoExecutando, f);
+		fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
+	}
 	
 }
 
@@ -111,9 +114,20 @@ void processador() {
 			interromperProcesso(processoExecutando);
 			escalonarProcesso();
 		}
+		
+		if(processoExecutando) {
+			fprintf(f, "---Gerenciador de Memoria---\n");
+			while(processoExecutando && gerenciaMemoria(processoExecutando, f) == 1) {
+				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
+				pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
+				printProcessoExecutando(processoExecutando, f);
+				escalonarProcesso();
+			}
+			fprintf(f, "---Fim do Gerenciador de Memoria---\n");
+		}
+		
 	}
 	if(processoExecutando) {
-		gerenciaMemoria(processoExecutando, f);
 		executarProcesso();
 	}
 	else fprintf(f,"Não há processo disponível para escalonamento\n");
