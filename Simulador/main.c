@@ -43,7 +43,7 @@ int main () {
 	}
 	printProcessosFinalizados();
 	fclose(f);
-	fclose(processLog);
+	fclose(processLog);	
 }
 
 /*-Functions----------------------------------------------------------*/
@@ -116,14 +116,14 @@ void processador() {
 		}
 		
 		if(processoExecutando) {
-			fprintf(f, "\n-------------Gerenciador de Memoria-------------\n");
+			fprintf(f, "\n******** Gerenciador de Memoria ******** \n");
 			while(processoExecutando && gerenciaMemoria(processoExecutando, f) == 1) {
 				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
 				pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
-				printProcessoExecutando(processoExecutando, f);
+				//printProcessoExecutando(processoExecutando, f);
 				escalonarProcesso();
 			}
-			fprintf(f, "-------------Fim do Gerenciador de Memoria-------------\n\n");
+			fprintf(f, "******** Fim do Gerenciador de Memoria ******** \n\n");
 		}
 		
 	}
@@ -153,11 +153,11 @@ int compare(const void * elem1, const void * elem2) {
 }
 
 void printProcessosFinalizados(){
-	fprintf(f,"\nProcessos finalizados:\n-------------------------------------\n");
+	fprintf(processLog,"\nProcessos finalizados:\n-------------------------------------\n");
 	for(int i=0;i<MAX_PROCESSOS;i++){
-		fprintf(f,"| PID = %d  ----  Turnaround = %d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
+		fprintf(processLog,"| PID = %d  ----  Turnaround = %d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
 		if(i==MAX_PROCESSOS-1) {
-			fprintf(f,"-------------------------------------\n");
+			fprintf(processLog,"-------------------------------------\n");
 		}
 	}
 }
