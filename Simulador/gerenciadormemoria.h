@@ -71,7 +71,7 @@ Processo* selecionaProcessoParaRemoverDaMemoria() {
 	pImpressora = getMostRecentlyBlocked(filaImpressora);
 	pDisc = getMostRecentlyBlocked(filaDisco);
 	pFita = getMostRecentlyBlocked(filaFita);
-	
+
 	if(pImpressora != NULL) {
 		Processo *returned = pImpressora;
 		int worstTime = tiposIO[IMPRESSORA].tempo - pImpressora->tempoBloqueado;
@@ -102,7 +102,6 @@ Processo* selecionaProcessoParaRemoverDaMemoria() {
 	else if(pFita != NULL) {
 		return pFita;
 	}
-	
 	if(!empty(&baixaPrioridade)) {
 		return getLastReadyProcess(baixaPrioridade);
 	} else if(!empty(&altaPrioridade)) {
@@ -153,36 +152,43 @@ void loadPage(Processo* processo, int pagina, FILE *f) {
 		removePage(processo, paginaRemovida, pagina, f);
 	} else {
 		int frame = alocarFrame(processo, pagina, f);
-		fprintf(f, "\nPágina %d do PID: %d alocada no frame %d\n", pagina, processo->PID, frame);
+		fprintf(f, "\nPágina %d do PID: %d a ser alocada no frame %d\n", pagina, processo->PID, frame);
 	}
 }
 
-void verificaECarregaPagina(Processo* processo, int pagina, FILE *f){
+int verificaECarregaPagina(Processo* processo, int pagina, FILE *f){
 	if(processo->tabelaPaginas[pagina].num_frame == -1){
 		fprintf(f, " Page Fault - ");
 		loadPage(processo, pagina, f);
+		return 1;
 	}
 	else {
 		fprintf(f, " Page Hit\n");
 		updatePageLRU(processo->gerenciadorPaginas, pagina);
+		return 0;
 	}
 }
 void verificaSeFazSwapIn(Processo *processo, FILE *f) {
-	if(processo == NULL){
-		return;
-	}
 	if(processo->status == ready_suspend || processo->status == blocked_suspend) {
 		swapIn(processo, f);
 	}
 	runProcess(processo);
 }
 
-void gerenciaMemoria(Processo *processo, FILE *f) {
-	if(processo->tempoExecutado % 3 == 0) {
+//retorna 1 em caso de page fault
+int gerenciaMemoria(Processo *processo, FILE *f) {
+	int parteInteira = processo->tempoExecutado / 3;
+	int proximaPagina = processo->paginasReferenciadas.ultimaPaginaReferenciada + 1;
+	if (	proximaPagina < processo->paginasReferenciadas.quantidade && 
+			parteInteira > processo->paginasReferenciadas.ultimaPaginaReferenciada) {
 		processo->paginasReferenciadas.ultimaPaginaReferenciada++;
-		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];	
-		fprintf(f, "Referencia à página %d - ", paginaReferenciada);
-		verificaECarregaPagina(processo, paginaReferenciada, f);
+		int paginaReferenciada = processo->paginasReferenciadas.vetor[processo->paginasReferenciadas.ultimaPaginaReferenciada];
+		fprintf(f, "Processo PID %d referencia a página %d - ", processo->PID, paginaReferenciada);
+		return verificaECarregaPagina(processo, paginaReferenciada, f);
 	}
+	else {
+		fprintf(f, "Processo PID %d não referenciou nenhuma página\n", processo->PID);
+	}
+	return 0;
 }
 #endif

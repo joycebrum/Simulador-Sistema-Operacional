@@ -34,7 +34,26 @@ int getTempoAleatorio(int tempoMaxEspecifico) {
 		return getValorAleatorio(TEMPO_MINIMO, tempoMaxEspecifico);
 	}
 }
-
+char* getStatusString(Processo *processo) {
+	switch(processo->status) {
+		case novo:
+			return "novo";
+		case running:
+			return "running";
+		case ready:
+			return "ready";
+		case ready_suspend:
+			return "ready suspend";
+		case blocked:
+			return "blocked";
+		case blocked_suspend:
+			return "blocked suspend";
+		case terminado:
+			return "terminado";
+		default:
+			return "status inválido";
+	}
+}
 /*Gera todas as tuplas de (IO,tempo) de um processo*/
 TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 	TempoChamadaIO *temposChamada;
@@ -60,14 +79,20 @@ TempoChamadaIO* getTempoBloqueioAleatorio(int quantidadeIO, int tempoServico) {
 }
 
 void setPaginasReferenciadasAleatoria(Processo *processo) {
-	int quantidade = processo->tempoServico / 3 + 1;
+	int quantidade;
+	if(processo->tempoServico % 3 == 0) {
+		quantidade = processo->tempoServico / 3;
+	}
+	else {
+		quantidade = processo->tempoServico / 3 + 1;
+	}
 	processo->paginasReferenciadas.ultimaPaginaReferenciada = -1;
 	processo->paginasReferenciadas.quantidade = quantidade;
 	int *referencias;
 	referencias = (int*) malloc(quantidade*sizeof(int));
 	referencias[0] = 0;
 	for(int i = 1; i < quantidade; i++) {
-		int paginaReferenciada = getValorAleatorio(1, quantidade);
+		int paginaReferenciada = getValorAleatorio(0, processo->numPaginas-1);
 		referencias[i] = paginaReferenciada;
 	}
 	
@@ -190,10 +215,16 @@ void printNovoProcesso(Processo *processo, FILE *f, int tempoDecorrido) {
 	fprintf(f,"-------------------------------------\n\n");
 }
 
-void printProcessoExecutando(Processo *processoExecutando, FILE *f, char* estado) {
-	fprintf(f,"Informações do PCB do processo %s:\n", estado);
+void printProcessoExecutando(Processo *processoExecutando, FILE *f) {
+	if(processoExecutando->status == running) {
+		fprintf(f,"Informações do PCB do processo executando:\n");
+	}
+	else {
+		fprintf(f,"Informações do PCB do processo bloqueado:\n");
+	}
 	fprintf(f,"-------------------------------------\n");
 	fprintf(f,"|PID = %d                           \n", processoExecutando->PID);
+	fprintf(f, "|Status = %s\n", getStatusString(processoExecutando));
 	fprintf(f,"|Tempo de Serviço = %d              \n", processoExecutando->tempoServico);
 	fprintf(f,"|Tempo executado = %d                \n", processoExecutando->tempoExecutado);
 	int achou = 0;
@@ -210,12 +241,7 @@ void printProcessoExecutando(Processo *processoExecutando, FILE *f, char* estado
 		fprintf(f,"|nenhuma página na memória \n");
 	}
 	
-	fprintf(f,"|LRU = [");
-	No *atual = processoExecutando->gerenciadorPaginas->head;
-	while(atual != NULL) {
-		fprintf(f, " %d ", atual->valor);
-		atual = atual->proximo;
-	}
-	fprintf(f,"]\n-------------------------------------\n");
+	imprimeLRU(processoExecutando->gerenciadorPaginas, f);
+	fprintf(f,"-------------------------------------\n");
 }
 #endif

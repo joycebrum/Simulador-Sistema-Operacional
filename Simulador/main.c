@@ -33,7 +33,7 @@ FILE *processLog;
 int main () {
 	inicializacao();
 	while(numProcessosFinalizados<MAX_PROCESSOS){
-		fprintf(f,"\n\nInstante = %d\n",tempoDecorrido);
+		fprintf(f,"\n\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
 		criaProcessos();
 		processador();	
@@ -43,7 +43,7 @@ int main () {
 	}
 	printProcessosFinalizados();
 	fclose(f);
-	fclose(processLog);
+	fclose(processLog);	
 }
 
 /*-Functions----------------------------------------------------------*/
@@ -71,14 +71,15 @@ void inicializacao() {
 void executarProcesso() {
 	/*Se há interrupção de IO do processo escalonado, escalona um novo*/
 	processoExecutando->tempoExecutado++;
-	if(pedirIO(processoExecutando, tempoDecorrido, f)) {
-		printProcessoExecutando(processoExecutando, f, "bloqueado");
+	if(procuraEPedeIO(processoExecutando, tempoDecorrido, f)) {
+		printProcessoExecutando(processoExecutando, f);
 		processoExecutando = NULL;
 	}
 	/*Se algum processo for escalonado*/
 	else if(processoExecutando) {
+		fprintf(f, "Processo de PID: %d consome o processador\n", processoExecutando->PID);
 		tempoExecutadoProcessador++;
-		printProcessoExecutando(processoExecutando, f, "em execução");
+		printProcessoExecutando(processoExecutando, f);
 	}
 }
 
@@ -86,9 +87,9 @@ void executarProcesso() {
 void escalonarProcesso() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = selecionarProximoProcessoAExecutar();
-	verificaSeFazSwapIn(processoExecutando, f);
-	if(processoExecutando) fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
-	
+	if(processoExecutando) {	
+		fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
+	}
 }
 
 /*Faz o papel do processador: escalona e executa processos*/
@@ -111,9 +112,27 @@ void processador() {
 			interromperProcesso(processoExecutando);
 			escalonarProcesso();
 		}
+		
+		if(processoExecutando) {
+			fprintf(f, "\n******** Gerenciador de Memoria ******** ");
+			int processoBloqueado = 1;
+			while(processoExecutando && processoBloqueado) {
+				fprintf(f, "\n");
+				verificaSeFazSwapIn(processoExecutando, f);
+				if(gerenciaMemoria(processoExecutando, f) == 1) {	
+					fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
+					pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
+					printProcessoExecutando(processoExecutando, f);
+					escalonarProcesso();
+				} else {
+					processoBloqueado = false;
+				}
+			}
+			fprintf(f, "******** Fim do Gerenciador de Memoria ******** \n\n");
+		}
+		
 	}
 	if(processoExecutando) {
-		gerenciaMemoria(processoExecutando, f);
 		executarProcesso();
 	}
 	else fprintf(f,"Não há processo disponível para escalonamento\n");
@@ -121,7 +140,7 @@ void processador() {
 }
 
 void criaProcessos() {
-	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
+	if(tempoDecorrido % 3 == 0 && numProcesso <= MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
 		fprintf(f,"Processo PID = %d criado e adicionado à fila de alta prioridade \n", processo->PID);
@@ -139,11 +158,11 @@ int compare(const void * elem1, const void * elem2) {
 }
 
 void printProcessosFinalizados(){
-	fprintf(f,"\nProcessos finalizados:\n-------------------------------------\n");
+	fprintf(processLog,"\nProcessos finalizados:\n-------------------------------------\n");
 	for(int i=0;i<MAX_PROCESSOS;i++){
-		fprintf(f,"| PID = %d  ----  Turnaround = %d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
+		fprintf(processLog,"| PID = %d  ----  Turnaround = %d\n", processosFinalizados[i].PID, processosFinalizados[i].tempoTermino);
 		if(i==MAX_PROCESSOS-1) {
-			fprintf(f,"-------------------------------------\n");
+			fprintf(processLog,"-------------------------------------\n");
 		}
 	}
 }
