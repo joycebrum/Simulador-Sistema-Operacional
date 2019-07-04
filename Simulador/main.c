@@ -87,11 +87,9 @@ void executarProcesso() {
 void escalonarProcesso() {
 	tempoExecutadoProcessador = 0;
 	processoExecutando = selecionarProximoProcessoAExecutar();
-	if(processoExecutando) {
-		verificaSeFazSwapIn(processoExecutando, f);
+	if(processoExecutando) {	
 		fprintf(f,"Escalonando processo com PID = %d\n", processoExecutando->PID);
 	}
-	
 }
 
 /*Faz o papel do processador: escalona e executa processos*/
@@ -116,12 +114,19 @@ void processador() {
 		}
 		
 		if(processoExecutando) {
-			fprintf(f, "\n******** Gerenciador de Memoria ******** \n");
-			while(processoExecutando && gerenciaMemoria(processoExecutando, f) == 1) {
-				fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n\n",processoExecutando->PID);
-				pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
-				//printProcessoExecutando(processoExecutando, f);
-				escalonarProcesso();
+			fprintf(f, "\n******** Gerenciador de Memoria ******** ");
+			int processoBloqueado = 1;
+			while(processoExecutando && processoBloqueado) {
+				fprintf(f, "\n");
+				verificaSeFazSwapIn(processoExecutando, f);
+				if(gerenciaMemoria(processoExecutando, f) == 1) {	
+					fprintf(f,"Bloqueando processo com PID = %d enquanto sua página é carregada\n",processoExecutando->PID);
+					pedirIO(processoExecutando, tiposIO[DISCO], &filaDisco);
+					printProcessoExecutando(processoExecutando, f);
+					escalonarProcesso();
+				} else {
+					processoBloqueado = false;
+				}
 			}
 			fprintf(f, "******** Fim do Gerenciador de Memoria ******** \n\n");
 		}
