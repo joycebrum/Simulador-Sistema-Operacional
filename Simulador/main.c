@@ -103,7 +103,7 @@ void processador() {
 			swapOutProcess(processoExecutando, f);
 			fprintf(f, "\n");
 			processoExecutando->tempoTermino = tempoDecorrido - processoExecutando->tempoEntrada;
-			processosFinalizados[numProcessosFinalizados] = *processoExecutando;
+			processosFinalizados[processoExecutando->PID - PID_INICIAL] = *processoExecutando;
 			numProcessosFinalizados++;
 			escalonarProcesso();
 		}

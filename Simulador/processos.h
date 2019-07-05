@@ -7,7 +7,7 @@
 #include "variables.h"
 #include "lru.h"
 
-int PID = 10;
+int PID = PID_INICIAL;
 
 /*Inicializa semente*/
 void initSrand() {

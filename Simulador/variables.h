@@ -12,6 +12,7 @@
 #define TEMPO_MAXIMO 20
 #define TEMPO_MINIMO 1
 #define TEMPO_MAX_CHEGADA 60
+#define PID_INICIAL 10
 
 // Gerenciados de Memoria
 #define MEM_PRINCIPAL 64
