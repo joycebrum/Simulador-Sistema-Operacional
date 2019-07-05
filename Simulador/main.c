@@ -32,7 +32,7 @@ FILE *processLog;
 /*-Main---------------------------------------------------------------*/
 int main () {
 	inicializacao();
-	while(numProcessosFinalizados<MAX_PROCESSOS){
+	while(numProcessosFinalizados < MAX_PROCESSOS){
 		fprintf(f,"\n\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\nInstante = %d\n",tempoDecorrido);
 		updateBlockedProcesses(f);		
 		criaProcessos();
@@ -140,7 +140,7 @@ void processador() {
 }
 
 void criaProcessos() {
-	if(tempoDecorrido % 3 == 0 && numProcesso <= MAX_PROCESSOS) {
+	if(tempoDecorrido % 3 == 0 && numProcesso < MAX_PROCESSOS) {
 		Processo *processo = createNewProcess((2+rand()%5), 0, tempoDecorrido);
 		adicionarProcessoNovo(processo);
 		fprintf(f,"Processo PID = %d criado e adicionado à fila de alta prioridade \n", processo->PID);
