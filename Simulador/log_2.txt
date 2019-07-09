@@ -1,0 +1,828 @@
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 0
+Processo PID = 10 criado e adicionado à fila de alta prioridade 
+Escalonando processo com PID = 10
+
+******** Gerenciador de Memoria ******** 
+Processo PID 10 referencia a página 0 -  Page Fault - 
+Página 0 do PID: 10 a ser alocada no frame 0
+Bloqueando processo com PID = 10 enquanto sua página é carregada
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 10                           
+|Status = blocked
+|Tempo de Serviço = 2              
+|Tempo executado = 0                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           0 
+|LRU = [ 0 ]
+-------------------------------------
+******** Fim do Gerenciador de Memoria ******** 
+
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 10, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 1
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 10, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 2
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 10, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 3
+Desbloqueando processo PID: 10 do IO Disco
+Processo PID = 11 criado e adicionado à fila de alta prioridade 
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 referencia a página 0 -  Page Fault - 
+Página 0 do PID: 11 a ser alocada no frame 1
+Bloqueando processo com PID = 11 enquanto sua página é carregada
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 0                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Escalonando processo com PID = 10
+
+Processo PID 10 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 10 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 10                           
+|Status = running
+|Tempo de Serviço = 2              
+|Tempo executado = 1                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           0 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 4
+
+******** Gerenciador de Memoria ******** 
+Processo PID 10 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 10 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 10                           
+|Status = running
+|Tempo de Serviço = 2              
+|Tempo executado = 2                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           0 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 5
+Processo com PID = 10 terminou, removendo todas as suas páginas da memória
+Frames 0 liberados
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 6
+Desbloqueando processo PID: 11 do IO Disco
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 1                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 7
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 2                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 8
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Interrompendo processo com PID = 11 para IO = Disco. Processo retornará no Quantum = 11
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 3                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 9
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 10
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 11
+Desbloqueando processo PID: 11 do IO Disco
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 referencia a página 0 -  Page Hit
+******** Fim do Gerenciador de Memoria ******** 
+
+Interrompendo processo com PID = 11 para IO = Impressora. Processo retornará no Quantum = 21
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 4                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 12
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 13
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 14
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 3}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 15
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 4}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 16
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 5}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 17
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 6}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 18
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 7}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 19
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 8}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 20
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): [ {PID: 11, tempo: 9}]
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 21
+Desbloqueando processo PID: 11 do IO Impressora
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 5                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 22
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 6                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|LRU = [ 0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 23
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 referencia a página 6 -  Page Fault - 
+Página 6 do PID: 11 a ser alocada no frame 0
+Bloqueando processo com PID = 11 enquanto sua página é carregada
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 6                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 0  6 ]
+-------------------------------------
+******** Fim do Gerenciador de Memoria ******** 
+
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 24
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 25
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 26
+Desbloqueando processo PID: 11 do IO Disco
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 7                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 0  6 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 27
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 8                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 0  6 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 28
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Interrompendo processo com PID = 11 para IO = Disco. Processo retornará no Quantum = 31
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 9                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 0  6 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 29
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 30
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 31
+Desbloqueando processo PID: 11 do IO Disco
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 referencia a página 0 -  Page Hit
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 10                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 6  0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 32
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Interrompendo processo com PID = 11 para IO = Fita Magnética. Processo retornará no Quantum = 38
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 11                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 6  0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 0}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 33
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 1}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 34
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 2}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 35
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 3}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 36
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 4}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 37
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): [ {PID: 11, tempo: 5}]
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 38
+Desbloqueando processo PID: 11 do IO Fita Magnética
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 12                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     6           0 
+|LRU = [ 6  0 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 39
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 referencia a página 4 -  Page Fault - 
+Página 4 do PID: 11 a ser alocada no frame 2
+Bloqueando processo com PID = 11 enquanto sua página é carregada
+Informações do PCB do processo bloqueado:
+-------------------------------------
+|PID = 11                           
+|Status = blocked
+|Tempo de Serviço = 13              
+|Tempo executado = 12                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     4           2 
+|     6           0 
+|LRU = [ 6  0  4 ]
+-------------------------------------
+******** Fim do Gerenciador de Memoria ******** 
+
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 0}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 40
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 1}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 41
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): [ {PID: 11, tempo: 2}]
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 42
+Desbloqueando processo PID: 11 do IO Disco
+Escalonando processo com PID = 11
+
+******** Gerenciador de Memoria ******** 
+Processo PID 11 não referenciou nenhuma página
+******** Fim do Gerenciador de Memoria ******** 
+
+Processo de PID: 11 consome o processador
+Informações do PCB do processo executando:
+-------------------------------------
+|PID = 11                           
+|Status = running
+|Tempo de Serviço = 13              
+|Tempo executado = 13                
+|Tabela de páginas = 
+|   página   |   frame   
+|     0           1 
+|     4           2 
+|     6           0 
+|LRU = [ 6  0  4 ]
+-------------------------------------
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Instante = 43
+Processo com PID = 11 terminou, removendo todas as suas páginas da memória
+Frames 1 2 0 liberados
+Não há processo disponível para escalonamento
+Fila de alta prioridade: []
+Fila de baixa prioridade: []
+Fila de bloqueados IO Disco (Tempo 3): []
+Fila de bloqueados IO Impressora (Tempo 10): []
+Fila de bloqueados IO Fita Magnética (Tempo 6): []

@@ -1,0 +1,29 @@
+
+Criado no instante de tempo 0
+-------------------------------------
+|PID = 10 
+|Tempo de Serviço = 2 
+|Quantidade IO = 0 
+|IO = []
+|Quantidade Páginas = 22
+|Paginas Referenciadas = [ 0 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 3
+-------------------------------------
+|PID = 11 
+|Tempo de Serviço = 13 
+|Quantidade IO = 4 
+|IO = [ Fita Magnética-11  Impressora-4  Disco-3 
+|       Disco-9 ]
+|Quantidade Páginas = 7
+|Paginas Referenciadas = [ 0 0 6 0 4 ] 
+-------------------------------------
+
+
+Processos finalizados:
+-------------------------------------
+| PID = 10  ----  Turnaround = 5
+| PID = 11  ----  Turnaround = 40
+-------------------------------------
