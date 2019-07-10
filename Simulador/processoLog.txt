@@ -1,0 +1,455 @@
+
+Criado no instante de tempo 0
+-------------------------------------
+|PID = 10 
+|Tempo de Serviço = 5 
+|Quantidade IO = 1 
+|IO = [ Fita Magnética-3 ]
+|Quantidade Páginas = 20
+|Paginas Referenciadas = [ 0 16 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 3
+-------------------------------------
+|PID = 11 
+|Tempo de Serviço = 19 
+|Quantidade IO = 14 
+|IO = [ Impressora-5  Fita Magnética-15  Disco-6 
+|       Fita Magnética-3  Impressora-1  Disco-16 
+|       Impressora-11  Disco-2  Disco-7 
+|       Fita Magnética-18  Disco-5  Disco-17 
+|       Fita Magnética-14  Impressora-10 ]
+|Quantidade Páginas = 35
+|Paginas Referenciadas = [ 0 8 13 14 16 15 21 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 6
+-------------------------------------
+|PID = 12 
+|Tempo de Serviço = 4 
+|Quantidade IO = 1 
+|IO = [ Fita Magnética-3 ]
+|Quantidade Páginas = 24
+|Paginas Referenciadas = [ 0 6 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 9
+-------------------------------------
+|PID = 13 
+|Tempo de Serviço = 14 
+|Quantidade IO = 8 
+|IO = [ Impressora-9  Disco-14  Impressora-12 
+|       Impressora-7  Impressora-4  Impressora-11 
+|       Fita Magnética-8  Disco-3 ]
+|Quantidade Páginas = 24
+|Paginas Referenciadas = [ 0 7 2 20 13 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 12
+-------------------------------------
+|PID = 14 
+|Tempo de Serviço = 5 
+|Quantidade IO = 1 
+|IO = [ Disco-5 ]
+|Quantidade Páginas = 26
+|Paginas Referenciadas = [ 0 15 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 15
+-------------------------------------
+|PID = 15 
+|Tempo de Serviço = 13 
+|Quantidade IO = 10 
+|IO = [ Disco-10  Disco-4  Disco-6 
+|       Impressora-12  Disco-8  Fita Magnética-10 
+|       Disco-1  Disco-9  Fita Magnética-7 
+|       Fita Magnética-3 ]
+|Quantidade Páginas = 60
+|Paginas Referenciadas = [ 0 27 2 17 38 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 18
+-------------------------------------
+|PID = 16 
+|Tempo de Serviço = 7 
+|Quantidade IO = 2 
+|IO = [ Disco-4  Fita Magnética-6 ]
+|Quantidade Páginas = 50
+|Paginas Referenciadas = [ 0 34 26 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 21
+-------------------------------------
+|PID = 17 
+|Tempo de Serviço = 8 
+|Quantidade IO = 8 
+|IO = [ Disco-4  Disco-8  Impressora-2 
+|       Disco-1  Fita Magnética-3  Impressora-5 
+|       Disco-4  Disco-7 ]
+|Quantidade Páginas = 39
+|Paginas Referenciadas = [ 0 15 4 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 24
+-------------------------------------
+|PID = 18 
+|Tempo de Serviço = 8 
+|Quantidade IO = 6 
+|IO = [ Fita Magnética-1  Fita Magnética-7  Disco-1 
+|       Disco-3  Fita Magnética-5  Fita Magnética-2 ]
+|Quantidade Páginas = 5
+|Paginas Referenciadas = [ 0 4 4 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 27
+-------------------------------------
+|PID = 19 
+|Tempo de Serviço = 10 
+|Quantidade IO = 3 
+|IO = [ Impressora-1  Fita Magnética-8  Fita Magnética-3 ]
+|Quantidade Páginas = 60
+|Paginas Referenciadas = [ 0 20 4 49 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 30
+-------------------------------------
+|PID = 20 
+|Tempo de Serviço = 13 
+|Quantidade IO = 11 
+|IO = [ Disco-5  Impressora-4  Impressora-6 
+|       Impressora-3  Disco-9  Fita Magnética-13 
+|       Impressora-11  Disco-12  Disco-8 
+|       Impressora-1  Impressora-2 ]
+|Quantidade Páginas = 12
+|Paginas Referenciadas = [ 0 9 11 3 9 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 33
+-------------------------------------
+|PID = 21 
+|Tempo de Serviço = 14 
+|Quantidade IO = 2 
+|IO = [ Impressora-13  Impressora-14 ]
+|Quantidade Páginas = 23
+|Paginas Referenciadas = [ 0 22 10 16 11 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 36
+-------------------------------------
+|PID = 22 
+|Tempo de Serviço = 20 
+|Quantidade IO = 13 
+|IO = [ Disco-6  Fita Magnética-7  Disco-17 
+|       Disco-15  Fita Magnética-11  Fita Magnética-16 
+|       Disco-8  Fita Magnética-19  Impressora-18 
+|       Disco-4  Fita Magnética-14  Fita Magnética-12 
+|       Disco-10 ]
+|Quantidade Páginas = 18
+|Paginas Referenciadas = [ 0 16 12 5 7 0 2 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 39
+-------------------------------------
+|PID = 23 
+|Tempo de Serviço = 20 
+|Quantidade IO = 5 
+|IO = [ Fita Magnética-2  Fita Magnética-12  Disco-9 
+|       Disco-1  Fita Magnética-8 ]
+|Quantidade Páginas = 56
+|Paginas Referenciadas = [ 0 33 21 53 51 18 11 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 42
+-------------------------------------
+|PID = 24 
+|Tempo de Serviço = 19 
+|Quantidade IO = 17 
+|IO = [ Impressora-15  Impressora-8  Disco-12 
+|       Impressora-14  Disco-1  Impressora-4 
+|       Impressora-18  Impressora-6  Fita Magnética-17 
+|       Impressora-3  Fita Magnética-19  Impressora-7 
+|       Disco-5  Impressora-2  Impressora-9 
+|       Impressora-15  Fita Magnética-10 ]
+|Quantidade Páginas = 51
+|Paginas Referenciadas = [ 0 7 2 15 35 26 23 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 45
+-------------------------------------
+|PID = 25 
+|Tempo de Serviço = 2 
+|Quantidade IO = 1 
+|IO = [ Fita Magnética-1 ]
+|Quantidade Páginas = 52
+|Paginas Referenciadas = [ 0 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 48
+-------------------------------------
+|PID = 26 
+|Tempo de Serviço = 10 
+|Quantidade IO = 10 
+|IO = [ Disco-8  Disco-10  Disco-7 
+|       Impressora-4  Fita Magnética-2  Impressora-6 
+|       Disco-1  Disco-8  Fita Magnética-3 
+|       Disco-5 ]
+|Quantidade Páginas = 44
+|Paginas Referenciadas = [ 0 4 0 27 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 51
+-------------------------------------
+|PID = 27 
+|Tempo de Serviço = 11 
+|Quantidade IO = 1 
+|IO = [ Disco-11 ]
+|Quantidade Páginas = 23
+|Paginas Referenciadas = [ 0 10 17 5 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 54
+-------------------------------------
+|PID = 28 
+|Tempo de Serviço = 15 
+|Quantidade IO = 14 
+|IO = [ Impressora-5  Disco-8  Fita Magnética-12 
+|       Fita Magnética-4  Disco-15  Impressora-1 
+|       Disco-11  Disco-13  Disco-2 
+|       Impressora-6  Fita Magnética-9  Fita Magnética-7 
+|       Impressora-10  Disco-5 ]
+|Quantidade Páginas = 34
+|Paginas Referenciadas = [ 0 17 0 17 9 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 57
+-------------------------------------
+|PID = 29 
+|Tempo de Serviço = 3 
+|Quantidade IO = 1 
+|IO = [ Fita Magnética-2 ]
+|Quantidade Páginas = 14
+|Paginas Referenciadas = [ 0 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 60
+-------------------------------------
+|PID = 30 
+|Tempo de Serviço = 11 
+|Quantidade IO = 7 
+|IO = [ Disco-3  Impressora-7  Disco-4 
+|       Fita Magnética-5  Disco-11  Disco-10 
+|       Impressora-6 ]
+|Quantidade Páginas = 12
+|Paginas Referenciadas = [ 0 3 5 7 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 63
+-------------------------------------
+|PID = 31 
+|Tempo de Serviço = 5 
+|Quantidade IO = 3 
+|IO = [ Impressora-4  Impressora-5  Fita Magnética-3 ]
+|Quantidade Páginas = 33
+|Paginas Referenciadas = [ 0 21 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 66
+-------------------------------------
+|PID = 32 
+|Tempo de Serviço = 5 
+|Quantidade IO = 5 
+|IO = [ Fita Magnética-5  Impressora-2  Fita Magnética-3 
+|       Fita Magnética-4  Fita Magnética-1 ]
+|Quantidade Páginas = 29
+|Paginas Referenciadas = [ 0 13 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 69
+-------------------------------------
+|PID = 33 
+|Tempo de Serviço = 6 
+|Quantidade IO = 2 
+|IO = [ Impressora-4  Impressora-6 ]
+|Quantidade Páginas = 56
+|Paginas Referenciadas = [ 0 23 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 72
+-------------------------------------
+|PID = 34 
+|Tempo de Serviço = 9 
+|Quantidade IO = 5 
+|IO = [ Impressora-7  Disco-1  Fita Magnética-4 
+|       Disco-8  Disco-6 ]
+|Quantidade Páginas = 8
+|Paginas Referenciadas = [ 0 0 4 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 75
+-------------------------------------
+|PID = 35 
+|Tempo de Serviço = 16 
+|Quantidade IO = 12 
+|IO = [ Impressora-3  Fita Magnética-5  Disco-14 
+|       Disco-6  Disco-16  Disco-8 
+|       Impressora-11  Disco-10  Fita Magnética-1 
+|       Disco-4  Fita Magnética-3  Disco-7 ]
+|Quantidade Páginas = 13
+|Paginas Referenciadas = [ 0 12 0 0 0 5 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 78
+-------------------------------------
+|PID = 36 
+|Tempo de Serviço = 8 
+|Quantidade IO = 3 
+|IO = [ Fita Magnética-6  Disco-3  Disco-1 ]
+|Quantidade Páginas = 32
+|Paginas Referenciadas = [ 0 18 26 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 81
+-------------------------------------
+|PID = 37 
+|Tempo de Serviço = 2 
+|Quantidade IO = 0 
+|IO = []
+|Quantidade Páginas = 58
+|Paginas Referenciadas = [ 0 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 84
+-------------------------------------
+|PID = 38 
+|Tempo de Serviço = 15 
+|Quantidade IO = 5 
+|IO = [ Fita Magnética-4  Fita Magnética-7  Fita Magnética-8 
+|       Fita Magnética-11  Fita Magnética-3 ]
+|Quantidade Páginas = 22
+|Paginas Referenciadas = [ 0 0 6 11 7 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 87
+-------------------------------------
+|PID = 39 
+|Tempo de Serviço = 14 
+|Quantidade IO = 8 
+|IO = [ Fita Magnética-1  Disco-7  Impressora-4 
+|       Disco-1  Disco-14  Disco-10 
+|       Impressora-2  Impressora-6 ]
+|Quantidade Páginas = 29
+|Paginas Referenciadas = [ 0 1 27 24 7 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 90
+-------------------------------------
+|PID = 40 
+|Tempo de Serviço = 14 
+|Quantidade IO = 6 
+|IO = [ Fita Magnética-13  Fita Magnética-7  Impressora-14 
+|       Impressora-8  Impressora-6  Disco-11 ]
+|Quantidade Páginas = 59
+|Paginas Referenciadas = [ 0 39 55 22 21 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 93
+-------------------------------------
+|PID = 41 
+|Tempo de Serviço = 4 
+|Quantidade IO = 0 
+|IO = []
+|Quantidade Páginas = 23
+|Paginas Referenciadas = [ 0 1 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 96
+-------------------------------------
+|PID = 42 
+|Tempo de Serviço = 17 
+|Quantidade IO = 14 
+|IO = [ Fita Magnética-17  Fita Magnética-2  Impressora-14 
+|       Fita Magnética-8  Impressora-11  Impressora-1 
+|       Fita Magnética-7  Fita Magnética-5  Impressora-3 
+|       Impressora-16  Fita Magnética-15  Fita Magnética-6 
+|       Impressora-10  Disco-13 ]
+|Quantidade Páginas = 16
+|Paginas Referenciadas = [ 0 2 3 0 11 11 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 99
+-------------------------------------
+|PID = 43 
+|Tempo de Serviço = 20 
+|Quantidade IO = 9 
+|IO = [ Fita Magnética-11  Fita Magnética-12  Disco-16 
+|       Impressora-6  Disco-8  Impressora-4 
+|       Fita Magnética-13  Disco-1  Fita Magnética-14 ]
+|Quantidade Páginas = 24
+|Paginas Referenciadas = [ 0 5 16 13 14 21 11 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 102
+-------------------------------------
+|PID = 44 
+|Tempo de Serviço = 9 
+|Quantidade IO = 3 
+|IO = [ Disco-9  Disco-6  Fita Magnética-5 ]
+|Quantidade Páginas = 52
+|Paginas Referenciadas = [ 0 49 41 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 105
+-------------------------------------
+|PID = 45 
+|Tempo de Serviço = 3 
+|Quantidade IO = 2 
+|IO = [ Impressora-3  Impressora-2 ]
+|Quantidade Páginas = 38
+|Paginas Referenciadas = [ 0 ] 
+-------------------------------------
+
+
+Criado no instante de tempo 108
+-------------------------------------
+|PID = 46 
+|Tempo de Serviço = 10 
+|Quantidade IO = 3 
+|IO = [ Fita Magnética-3  Fita Magnética-4  Impressora-7 ]
+|Quantidade Páginas = 20
+|Paginas Referenciadas = [ 0 15 7 1 ] 
+---------------------------
